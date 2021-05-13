@@ -12,7 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 
 import "./Login.css"
- class Login extends Component {
+ class Login extends Component{
 constructor(props) {
   super(props)
   this.state = {
