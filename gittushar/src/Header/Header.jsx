@@ -24,14 +24,13 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
         <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header navigationcss">
-              {/* <a className="navbar-brand " href="#">Tushar.com</a> */}
+            
             </div>
             <ul className="nav navbar-nav websitename">
               <li ><a className="navigationcss" href="#">Home</a></li>
               <li><a className="navigationcss" href="#">Development</a></li>
               <li><a className="navigationcss" href="#">About</a></li>
               <li><a className="navigationcss" href="#">Contact Us</a></li>
-
             </ul>
             <form className="navbar-form navbar-left searchfortushar">
               <div className="input-group">
