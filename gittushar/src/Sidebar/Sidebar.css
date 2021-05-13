@@ -1,0 +1,16 @@
+.sidebarfull{
+    background-color: rgb(44, 40, 40);
+}
+.iconstyle{
+    font-size: 20px !important;
+  padding-top: 5px !important;
+}
+.iconstyletext{
+    margin-bottom: 10% !important;
+}
+.hemburger{
+    font-size: 30px !important;
+    margin-top: 30% !important;
+    color: white;
+    cursor: pointer;
+}
