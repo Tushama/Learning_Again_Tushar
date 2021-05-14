@@ -4,27 +4,23 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
  class Header extends Component {
      constructor(props) {
          super(props)
-     
          this.state = {
             name:"",  
          }
      }
     //   componentDidMount = () => {
     //      this.setState({
-    //          name: this.props.location.state.name
+    //          name: this.props.location.state.name,
     //      })
     //  }
-     
     render() {
         return (
             <div>
             <div>
-        <title>Bootstrap Example</title>
-       
+        <title>Tushar Sharma</title>
         <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header navigationcss">
-            
             </div>
             <ul className="nav navbar-nav websitename">
               <li ><a className="navigationcss" href="#">Home</a></li>

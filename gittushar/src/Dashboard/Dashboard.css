@@ -1,0 +1,42 @@
+.displayset{
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+ 
+}
+.dset{
+   margin-left: 2% !important;
+   display: flex !important;
+   flex-wrap: wrap;
+}
+@media screen {
+    .dset{
+        margin-left: 2% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+     }
+}
+.employercard{
+    display: flex;
+   flex-wrap: wrap !important;
+   justify-content: center;
+   width: 100%;
+   margin-left: 2%;
+   
+}
+.rex{
+    background-color: rgb(243, 243, 243);
+    height: 700px;
+    margin-top: -1%;
+}
+.cardcoloremploy{
+    justify-content: center;
+    margin: 2%;
+    padding: 3%;
+    background-image: url("https://www.google.com/search?q=png+bar&rlz=1C1JJTC_enIN953IN953&sxsrf=ALeKk02YxcbH960QZErdhnIEBi_RCu-O3g:1620987923495&tbm=isch&source=iu&ictx=1&fir=meyBXwyaEWYETM%252CwNx4lzKYl3scqM%252C_&vet=1&usg=AI4_-kTPyvdweoENyN00_y-R8ud34e2Gug&sa=X&ved=2ahUKEwiLofXK-sjwAhUMX30KHR5oBZ0Q9QF6BAgSEAE#imgrc=meyBXwyaEWYETM") !important;
+width: 15%;
+height: 130px;
+}
+.count{
+    font-weight: 600;
+   padding: 5%;
+}

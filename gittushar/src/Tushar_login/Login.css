@@ -100,8 +100,9 @@ span.psw {
 margin-top: 3%;
 }
 .fulldisplay{
-    background-image: url("/src/Tushar_login/loginbackround.jpg");
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190508/pngtree-focus-light-effect-image_110660.jpg");
     height: 625px;
+    padding-top: 4%;
    
     /* display: contents; */
 }
@@ -112,8 +113,6 @@ margin-top: 3%;
   /* background-image: url("https://image.shutterstock.com/image-photo/world-environment-day-concept-sun-260nw-264026870.jpg"); */
   background-color: rgb(236, 236, 236) !important;
   width: 50%;
-  text-align: center;
-  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   /* margin-top: 10%; */
