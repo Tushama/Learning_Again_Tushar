@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import "./Dashboard.css"
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { Table } from '@material-ui/core';
 
 
 
@@ -31,11 +32,8 @@ class Dashboard extends Component {
           className=" employercard"
         >
           <Card
-            style={{
-           
-              backgroundColor: "aliceblue",
-            }}
-            className="m-2 p-3 justify-content-md-center cardcoloremploy"
+          
+            className="cardcoloremploy"
           >
         
             <div>
@@ -44,11 +42,8 @@ class Dashboard extends Component {
             </div>
           </Card>
           <Card
-            style={{
-           
-              backgroundColor: "aliceblue",
-            }}
-            className="m-2 p-3 cardcoloremploy"
+          
+            className=" cardcoloremploy"
           >
             <div
             >
@@ -57,11 +52,8 @@ class Dashboard extends Component {
             </div>
           </Card>
           <Card
-            style={{
            
-              backgroundColor: "aliceblue",
-            }}
-            className=" cardcoloremploy"
+            className="cardcoloremploy"
           >
             <div
             >
@@ -70,15 +62,15 @@ class Dashboard extends Component {
             </div>
           </Card>
            <Card className="cardcoloremploy "
-           style={{backgroundColor:"aliceblue"}}
+           
           >
             <div>
        Equality Ratio
               <p className="count">60</p>
             </div>
           </Card>
-          <Card className="cardcoloremploy m-2 p-3"
-          style={{backgroundColor:"aliceblue" }}
+          <Card className="cardcoloremploy"
+      
           >
             <div
             >
@@ -90,20 +82,81 @@ class Dashboard extends Component {
         
       
         </div>
-        <div>
-        <Card className="cardcoloremploy1 m-2 p-3"
-          style={{backgroundColor:"aliceblue" }}
+        <div className="employercard1">
+        <Card className="cardcoloremploy1"
+          
           >
+           
             <div
             >
-              Time Allocated
-              <p className="count">60</p>
+            
+              <table className="table" >
+              <thead class="grey lighten-2">
+<tr>
+<th scope="col">
+      Name
+    </th>
+    <th scope="col">
+        Total Ammount Payable
+    </th>
+    <th scope="col">
+        Total Ammount Recievable
+    </th>
+    <th scope="col">
+        Total Equality
+    </th>
+</tr>
+</thead>
+<tr>
+<th scope="row">Tushar Sharma</th>
+    <td>
+        6,00,000
+    </td>
+    <td>
+        6,00,000
+    </td>
+    <td>
+        10%
+    </td>
+</tr>
+<tr>
+<th scope="row">Bhawna Yadav</th>
+    <td>
+       10,00,000
+    </td>
+    <td>
+        4,00,000
+    </td>
+    <td>
+        15%
+    </td>
+</tr>
+
+<tr>
+<th scope="row">Nitin Singh</th>
+    <td>
+       12,00,000
+    </td>
+    <td>
+        3,00,000
+    </td>
+    <td>
+        12%
+    </td>
+</tr>
+
+
+              </table>
             </div>
          
           </Card>
-
+          <Card className="cardcoloremploy2"
+       
+          >
+         
+          </Card>
         </div>
-                <h1> {this.state.name}</h1>
+               
 
 
 

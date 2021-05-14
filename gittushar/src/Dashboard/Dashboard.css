@@ -25,18 +25,50 @@
 }
 .rex{
     background-color: rgb(243, 243, 243);
-    height: 700px;
-    margin-top: -1%;
+    height: 548px;
+    margin-top: -2%;
+    overflow-x: hidden;
 }
 .cardcoloremploy{
     justify-content: center;
     margin: 2%;
-    padding: 3%;
-    background-image: url("https://www.google.com/search?q=png+bar&rlz=1C1JJTC_enIN953IN953&sxsrf=ALeKk02YxcbH960QZErdhnIEBi_RCu-O3g:1620987923495&tbm=isch&source=iu&ictx=1&fir=meyBXwyaEWYETM%252CwNx4lzKYl3scqM%252C_&vet=1&usg=AI4_-kTPyvdweoENyN00_y-R8ud34e2Gug&sa=X&ved=2ahUKEwiLofXK-sjwAhUMX30KHR5oBZ0Q9QF6BAgSEAE#imgrc=meyBXwyaEWYETM") !important;
+    padding: 1%;
+    background-image: url("https://png.pngtree.com/png-vector/20190307/ourmid/pngtree-vector-element-of-business-data-graph-analytic-png-image_779763.jpg") !important;
 width: 15%;
-height: 130px;
+height: 100px;
 }
 .count{
     font-weight: 600;
    padding: 5%;
+   color: red;
+}
+.employercard1{
+    display: flex;
+    flex-wrap: wrap !important;
+    justify-content: center;
+    width: 100%;
+    margin-left: 2%;
+}
+.cardcoloremploy1{
+width: 50%;
+margin-left: 2% !important;
+height: 328px;
+display: flex;
+flex-wrap: wrap !important;
+background-image: url("https://atlas-content-cdn.pixelsquid.com/assets_v2/188/1885747240119571566/jpeg-600/G03.jpg?modifiedAt=1");
+
+}
+.cardcoloremploy2{
+    width: 36%;
+    margin-left: 2% !important;
+    margin-right: 2%;
+    background-image: url("/src/Dashboard/monthlybudget.jpg");
+    font-size: 24px !important;
+
+}
+.tablehead{
+    margin-left: 5% !important;
+}
+.table{
+    margin-left: 8%;
 }
