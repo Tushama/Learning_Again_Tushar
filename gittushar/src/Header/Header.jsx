@@ -13,6 +13,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
     //          name: this.props.location.state.name,
     //      })
     //  }
+    Home=()=>{
+      this.props.location.push("/home")
+    }
     render() {
         return (
             <div>
@@ -23,7 +26,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
             <div className="navbar-header navigationcss">
             </div>
             <ul className="nav navbar-nav websitename">
-              <li ><a className="navigationcss" href="#">Home</a></li>
+            <li><a className="navigationcss" href="#">Admin</a></li>
+
+              <li onClick={this.Home}><a className="navigationcss">Home</a></li>
               <li><a className="navigationcss" href="#">Development</a></li>
               <li><a className="navigationcss" href="#">About</a></li>
               <li><a className="navigationcss" href="#">Contact Us</a></li>
