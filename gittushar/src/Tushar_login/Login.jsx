@@ -9,14 +9,14 @@ import Grid from '@material-ui/core/Grid';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Swal from 'sweetalert2';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import axios from 'axios';
 
 import "./Login.css"
 class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
+      username: "",
       password: "",
       Confirmpassword: "",
       checcck: "",
@@ -24,49 +24,41 @@ class Login extends Component {
 
     }
   }
-  checcck = () => {
-    this.setState({
-      checcck: false,
-    })
-  }
-  succes = () => {
-    let regex = /[a-zA-Z]+\\.?/;
 
-    if (this.state.name == "" || this.state.name == null) {
-      Swal.fire({
-        icon: 'error',
-        title: '',
-        text: 'Type your Username',
-        // footer: '<a href>Why do I have this issue?</a>'
-      })
-    }
-    // else if (!this.state.name.match(regex)) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '',
-    //     text: 'Atleast One Lower Case',
-    //     // footer: '<a href>Why do I have this issue?</a>'
-    //   })
-
-    //   return;
-    // }
-
+// create function for sending details to the backend
+ sendDetailsToServer = () => {
+  if(this.state.username.length && this.state.password.length) {
+    this.props.showError(null);
+      const payload={
+          "username":this.state.username,
+          "password":this.state.password,
+      }
+      axios.post("http://localhost:8000/"+'adminute/login', payload)
+          .then((response) => {
+              console.log("response ", response);
+              if(response.status === 200){
+                  console.log(response.data.message)
+                  alert(response.data.message)
+                  if(response.data.message !== "Invalid user name ")
+                  this.props.history.push('/login',response.data);
+              } else{
+                this.props.showError("Some error ocurred");
+              }
+          },(error) =>{
+              console.log("error ", error);
+          })
+          .catch(function (error) {
+              console.log(error);
+          });    
+  } 
     else if (this.state.password == "") {
       Swal.fire({
         icon: 'error',
         title: '',
         text: 'Type your Password',
-        // footer: '<a href>Why do I have this issue?</a>'
+        
       })
-    }
-    else if (this.state.Confirmpassword != this.state.password) {
-      Swal.fire({
-        icon: 'error',
-        title: '',
-        text: 'Your Password Did Not Match',
-        // footer: '<a href>Why do I have this issue?</a>'
-      })
-    }
+    }    
     else {
       Swal.fire(
         'Good job!',
@@ -78,8 +70,68 @@ class Login extends Component {
       })
 
     }
+  
+}
 
+ 
+
+
+  checcck = () => {
+    this.setState({
+      checcck: false,
+    })
   }
+  // succes = () => {
+  //   let regex = /[a-zA-Z]+\\.?/;
+
+  //   if (this.state.name == "" || this.state.name == null) {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: '',
+  //       text: 'Type your Username',
+  //       // footer: '<a href>Why do I have this issue?</a>'
+  //     })
+  //   }
+    // else if (!this.state.name.match(regex)) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Atleast One Lower Case',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
+
+    //   return;
+    // }
+
+    // else if (this.state.password == "") {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Type your Password',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
+    // }
+    // else if (this.state.Confirmpassword != this.state.password) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Your Password Did Not Match',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
+    // }
+    // else {
+    //   Swal.fire(
+    //     'Good job!',
+    //     'Login Successfully',
+    //     'success'
+    //   )
+    //   this.props.history.push("/dashboard", {
+    //     name: this.state.name
+    //   })
+
+    // }
+
+ // }
   checking = (e, value) => {
     this.setState({
       value: true,
@@ -88,8 +140,6 @@ class Login extends Component {
   render() {
     return (
       <div className="fulldisplay">
-
-
         <div className="">
           <Card className="newcardsize">
             <form className=" ">
@@ -145,7 +195,7 @@ class Login extends Component {
                    Remember me
           </label>
                 <div className="typing ">
-                  <button type="button" className="loginbutton " onClick={this.succes}>Login</button>
+                  <button type="button" className="loginbutton " onClick={this.sendDetailsToServer}>Login</button>
                 </div>
 
               </div>
