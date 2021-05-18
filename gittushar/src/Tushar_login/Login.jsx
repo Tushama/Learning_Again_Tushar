@@ -164,36 +164,8 @@ class Login extends Component {
                   <input className="typing" type="password" placeholder="Enter Password" name="psw" value={this.state.password}
                     onChange={(e) => this.setState({
                       password: e.target.value
-                    })}
-                  /></div>
-                <label className="lefthand mt-3"><b>Confirm Password</b></label>
-                <div className="typing ">
-                  <input className="typing" type="password" placeholder="Enter Password" name="psw" value={this.state.Confirmpassword}
-                    onChange={(e) => this.setState({
-                      Confirmpassword: e.target.value
-                    })}
-                  /></div>
-                <label className="lefthand">
-                  {/* <Checkbox color="primary"
-                    value={this.state.checked}
-                    onChange={this.checcck}
-                  
-
-                  /> */}
-                    {/* <Checkbox
-                          onClick={(event) => event.stopPropagation(event)}
-                          size="small"
-                          value={this.state.check}
-                          defaultChecked={
-                            this.state.checked
-                          }
-                          onChange={(e, check) => {
-                            this.checking(check);
-                          }}
-                          inputProps={{ "aria-label": "secondary checkbox" }}
-                        /> */}
-                   Remember me
-          </label>
+                    })} />
+                    </div>             
                 <div className="typing ">
                   <button type="button" className="loginbutton " onClick={this.sendDetailsToServer}>Login</button>
                 </div>
