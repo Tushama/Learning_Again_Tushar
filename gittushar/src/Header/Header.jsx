@@ -26,7 +26,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
             <div className="navbar-header navigationcss">
             </div>
             <ul className="nav navbar-nav websitename">
-            <li><a className="navigationcss" href="#">Admin</a></li>
+            <li><a className="navigationcss" href="/admin2">Admin</a></li>
 
               <li onClick={this.Home}><a className="navigationcss">Home</a></li>
               <li><a className="navigationcss" href="#">Development</a></li>

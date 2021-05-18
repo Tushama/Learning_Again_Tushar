@@ -1,4 +1,42 @@
 .headingadmin{
-    margin-left: 7%;
+    margin-left: 5%;
     text-align: left;
+}
+.cardflex{
+    display: flex;
+    
+}
+.profileset{
+   
+    display: flex !important;
+}
+.profileset1{
+  line-height: 30px !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.stylecard{
+    border: 1px ;
+    padding: 10px;
+    box-shadow:1px 2px 3px 4px #cac8c8 !important;
+}
+.cardtitle{
+    font-weight: 600;
+}
+.secondcard{
+    border: 1px ;
+    padding: 10px;
+    box-shadow:2px 3px 4px 5px #888888 !important;
+    margin-left: 2%;
+    margin-right: 3%;
+}
+.secondcard1{
+    border: 1px ;
+    box-shadow:3px 4px 5px 6px #888888 !important;
+    margin-left: 2%;
+    margin-right: 3%;
+    margin-top: 2%;
+    font-weight: 600;
+}
+.aboutcard{
+    margin-left: 2%;
 }
