@@ -38,7 +38,7 @@ sharma
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr1">
-<img className="imagedemo" src ="https://www.d3-graph-gallery.com/img/block/block_circularBar.png"/>
+<img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/>
 </Card>
                     </Grid>
                     <Grid item md={4}>

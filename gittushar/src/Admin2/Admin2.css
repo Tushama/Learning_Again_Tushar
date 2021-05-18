@@ -7,6 +7,9 @@
     width: 95%;
     background-color: rgb(223, 224, 206) !important;
     margin-top: 4%;
+    border: 0px solid ;
+    padding: 10px;
+    box-shadow: 4px 4px 4px 4px  #c2c0c0 !important;
 }
 .card3{
     height: 150px;
@@ -14,24 +17,37 @@
     background-color: rgb(240, 240, 243) !important;
     margin-left: 5%;
     margin-top: 4%;
+    border: 0px solid ;
+    padding: 10px;
+    box-shadow: 4px 4px 4px 4px  #c2c0c0 !important;
 }
 .middlecard{
     height: 150px;
     background-color: rgb(245, 240, 240) !important;
     justify-content:space-around;
     margin-top: 2%;
+    border: 0px solid ;
+    padding: 10px;
+    box-shadow: 4px 4px 4px 4px  #c2c0c0 !important;
 }
 .cardr1{
     height: 310px;
     width: 95%;
     background-color: rgb(224, 224, 215) !important;
     margin-top: 4%;
+    border: 0px solid ;
+    padding: 10px;
+    box-shadow: 4px 4px 4px 4px  #c2c0c0 !important;
+  
 }
 .cardr2{
     height:310px;
     background-color: rgb(243, 237, 237) !important;
     justify-content:space-around;
     margin-top: 4%;
+    border: 0px solid ;
+    padding: 10px;
+    box-shadow: 4px 4px 4px 4px  #c2c0c0 !important;
 }
 .imagedemo{
     width: 100%;
