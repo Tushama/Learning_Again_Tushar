@@ -38,12 +38,12 @@ sharma
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr1">
-hello
+<img className="imagedemo" src ="https://www.d3-graph-gallery.com/img/block/block_circularBar.png"/>
 </Card>
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr2">
-tushar
+<img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/>
 </Card>
                     </Grid>
                     <Grid item md={3}>
