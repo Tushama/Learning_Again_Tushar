@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Swal from "sweetalert2";
-import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
 import HOC1 from "../HOC1";
-
 import "./Login.css";
 class Login extends Component {
   constructor(props) {
