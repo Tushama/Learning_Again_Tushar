@@ -4,7 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 class Recruiterheader extends Component {
+    
     render() {
         return (
             <div>
@@ -21,6 +23,8 @@ class Recruiterheader extends Component {
     </Grid>
     <Grid item md={4}>
 <AccountCircleIcon className="usericon"/>
+<ArrowDropDownIcon/>
+
     </Grid>
 </Grid>
 
