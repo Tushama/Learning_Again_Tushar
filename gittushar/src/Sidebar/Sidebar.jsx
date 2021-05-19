@@ -12,11 +12,11 @@ class Sidebar extends Component {
     this.state = {};
   }
   candidateHandler = () => {
-    this.props.history.push("/Candidate-User");
-  }
+    this.props.push("/Candidate-User");
+  };
   recruiterHandler = () => {
     this.props.history.push("/Recruiter-User");
-  }
+  };
   render() {
     return (
       <div>
