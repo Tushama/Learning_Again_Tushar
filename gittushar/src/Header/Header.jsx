@@ -20,10 +20,10 @@ class Header extends Component {
     return (
       <div>
         <div>
-          <title>Tushar Sharma</title>
+         
           <nav className="navbar navbar-inverse">
-            <div className="container-fluid">
-              <div className="navbar-header navigationcss"></div>
+            <div className="">
+            
               <ul className="nav navbar-nav websitename">
                 <li>
                   <a className="navigationcss" href="/admin2">
