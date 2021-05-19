@@ -14,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/login" component={Login}></Route>
+          <Route  exact path="/" component={Login}></Route>
           <Route path="/dashboard" component={Dashboard}></Route>
           <Route path="/home" component={Home}></Route>
           <Route path="/admin" component={Admin}></Route>
