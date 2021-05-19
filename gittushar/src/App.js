@@ -5,6 +5,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import Home from "../src/Home/Home";
 import Admin from "../src/Admin/Admin";
 import Admin2 from "../src/Admin2/Admin2";
+import Candidate from "../src/Candidate/Candidate";
+import Recruiter from "../src/Recruiter/Recruiter"
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/home" component={Home}></Route>
           <Route path="/admin" component={Admin}></Route>
           <Route path="/admin2" component={Admin2}></Route>
+          <Route path="/Candidate-User" component={Candidate}></Route>
+          <Route path="/Recruiter-User" component={Recruiter}></Route>
         </Switch>
       </BrowserRouter>
     </div>

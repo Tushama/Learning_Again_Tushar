@@ -7,6 +7,17 @@ import DetailsIcon from "@material-ui/icons/Details";
 import ChildFriendlyIcon from "@material-ui/icons/ChildFriendly";
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  candidateHandler = () => {
+    // window.Location("/Candidate-User");
+    window.location ="/Candidate-User";
+  };
+  recruiterHandler = () => {
+    this.props.history.push("/Recruiter-User");
+  };
   render() {
     return (
       <div>
@@ -22,13 +33,25 @@ class Sidebar extends Component {
             <NavItem eventKey="Candidate">
               <NavIcon />
               <NavText>
-                <DetailsIcon className="iconstyle" /> Candidate
+                <DetailsIcon
+                  className="iconstyle"
+                  onClick={() => {
+                    this.candidateHandler();
+                  }}
+                />{" "}
+                Candidate
               </NavText>
             </NavItem>
             <NavItem eventKey=" Recruiter">
               <NavIcon />
               <NavText>
-                <ChildFriendlyIcon className="iconstyle" /> Recruiter
+                <ChildFriendlyIcon
+                  className="iconstyle"
+                  onClick={() => {
+                    this.recruiterHandler();
+                  }}
+                />{" "}
+                Recruiter
               </NavText>
             </NavItem>
           </SideNav.Nav>
