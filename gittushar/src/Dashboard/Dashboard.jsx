@@ -18,11 +18,11 @@ class Dashboard extends Component {
             name: "",
         }
     }
-    componentDidMount = () => {
-        this.setState({
-            name: this.props.location.state.name
-        })
-    }
+    // componentDidMount = () => {
+    //     this.setState({
+    //         name: this.props.location.state.name
+    //     })
+    // }
     render() {
         return (
             <div className="rex">

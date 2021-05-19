@@ -10,6 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Swal from 'sweetalert2';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import HOC1 from "../HOC1"
 
 import "./Login.css"
 class Login extends Component {
@@ -184,4 +185,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default HOC1(Login)

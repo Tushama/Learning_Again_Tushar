@@ -5,6 +5,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Home from "../src/Home/Home";
 import Admin from "../src/Admin/Admin";
 import Admin2 from "../src/Admin2/Admin2";
+
 function App() {
   return (
     <div className="App">
