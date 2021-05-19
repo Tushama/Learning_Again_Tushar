@@ -7,62 +7,75 @@ import HOC1 from "../HOC1";
 import "./Login.css";
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       username: "",
       password: "",
       Confirmpassword: "",
       checcck: "",
-      check: "",
-    };
+      check:"",
+
+    }
   }
-  sendDetailsToServer = () => {
-    if (this.state.username.length && this.state.password.length) {
-      this.props.showError(null);
-      const payload = {
-        username: this.state.username,
-        password: this.state.password,
-      };
-      axios
-        .post("http://localhost:8000/" + "adminute/login", payload)
-        .then(
-          (response) => {
-            console.log("response ", response);
-            if (response.status === 200) {
-              console.log(response.data.message);
-              alert(response.data.message);
-              if (response.data.message !== "Invalid user name ")
-                this.props.history.push("/login", response.data);
-            } else {
-              this.props.showError("Some error ocurred");
-            }
-          },
-          (error) => {
-            console.log("error ", error);
-          }
-        )
-        .catch(function (error) {
-          console.log(error);
-        });
-    } else if (this.state.password == "") {
+
+// create function for sending details to the backend
+ sendDetailsToServer = () => {
+  
+  
+  if (this.state.username == "") {
+    Swal.fire({
+      icon: 'error',
+      title: '',
+      text: 'Type your user Name',
+      
+    });
+    return;
+  } 
+  if (this.state.password == "") {
       Swal.fire({
-        icon: "error",
-        title: "",
-        text: "Type your Password",
+        icon: 'error',
+        title: '',
+        text: 'Type your Password',
+        
       });
-    } else {
-      Swal.fire("Good job!", "Login Successfully", "success");
-      this.props.history.push("/dashboard", {
-        name: this.state.name,
+      return;
+    } 
+
+
+  axios.post("http://localhost:8000/adminute/login" ,{
+    "username":this.state.username,
+    "password":this.state.password
+}).then((data) =>{
+    console.log(data)
+    if(data.status ==201){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Error',
+        text: data.data.message,
+        
       });
     }
-  };
+    if(data.status ==200){
+      this.props.history.push('/dashboard',data.data);
+    }
+  }).catch((error) =>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'please provide username and password',
+      
+    });
+  })
+  }
+
+ 
+
 
   checcck = () => {
     this.setState({
       checcck: false,
-    });
-  };
+    })
+  }
   // succes = () => {
   //   let regex = /[a-zA-Z]+\\.?/;
 
@@ -74,46 +87,46 @@ class Login extends Component {
   //       // footer: '<a href>Why do I have this issue?</a>'
   //     })
   //   }
-  // else if (!this.state.name.match(regex)) {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: '',
-  //     text: 'Atleast One Lower Case',
-  //     // footer: '<a href>Why do I have this issue?</a>'
-  //   })
+    // else if (!this.state.name.match(regex)) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Atleast One Lower Case',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
 
-  //   return;
-  // }
+    //   return;
+    // }
 
-  // else if (this.state.password == "") {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: '',
-  //     text: 'Type your Password',
-  //     // footer: '<a href>Why do I have this issue?</a>'
-  //   })
-  // }
-  // else if (this.state.Confirmpassword != this.state.password) {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: '',
-  //     text: 'Your Password Did Not Match',
-  //     // footer: '<a href>Why do I have this issue?</a>'
-  //   })
-  // }
-  // else {
-  //   Swal.fire(
-  //     'Good job!',
-  //     'Login Successfully',
-  //     'success'
-  //   )
-  //   this.props.history.push("/dashboard", {
-  //     name: this.state.name
-  //   })
+    // else if (this.state.password == "") {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Type your Password',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
+    // }
+    // else if (this.state.Confirmpassword != this.state.password) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '',
+    //     text: 'Your Password Did Not Match',
+    //     // footer: '<a href>Why do I have this issue?</a>'
+    //   })
+    // }
+    // else {
+    //   Swal.fire(
+    //     'Good job!',
+    //     'Login Successfully',
+    //     'success'
+    //   )
+    //   this.props.history.push("/dashboard", {
+    //     name: this.state.name
+    //   })
 
-  // }
+    // }
 
-  // }
+ // }
   checking = (e, value) => {
     this.setState({
       value: true,
@@ -126,6 +139,7 @@ class Login extends Component {
           <Card className="newcardsize">
             <form className=" ">
               <div className="imgcontainer ">
+                {/* <span onclick="document.getElementById('id01').style.display='none'" className="close" title="Close Modal">×</span> */}
                 <AccountCircleIcon
                   style={{ fontSize: "40px" }}
                   color="primary"
@@ -133,60 +147,36 @@ class Login extends Component {
                 <h2>Login</h2>
               </div>
               <div className="container">
-                <label className="lefthand">
-                  <b>Username</b>
-                </label>
+                <label className="lefthand"><b>Username</b></label>
                 <div className="typing ">
-                  <input
-                    className="typing"
-                    type="text"
-                    placeholder="Enter Username"
-                    name="uname"
-                    value={this.state.name}
-                    onChange={(e) =>
-                      this.setState({
-                        name: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-                <label className="lefthand mt-3">
-                  <b>Password</b>
-                </label>
+                  <input className="typing" type="text" placeholder="Enter Username" name="uname" value={this.state.name}
+                    onChange={(e) => this.setState({
+                      username: e.target.value
+                    })}
+                  /></div>
+                <label className="lefthand mt-3"><b>Password</b></label>
                 <div className="typing ">
-                  <input
-                    className="typing"
-                    type="password"
-                    placeholder="Enter Password"
-                    name="psw"
-                    value={this.state.password}
-                    onChange={(e) =>
-                      this.setState({
-                        password: e.target.value,
-                      })
-                    }
-                  />
-                </div>
+                  <input className="typing" type="password" placeholder="Enter Password" name="psw" value={this.state.password}
+                    onChange={(e) => this.setState({
+                      password: e.target.value
+                    })} />
+                    </div>             
                 <div className="typing ">
-                  <button
-                    type="button"
-                    className="loginbutton "
-                    onClick={this.sendDetailsToServer}
-                  >
-                    Login
-                  </button>
+                  <button type="button" className="loginbutton " onClick={this.sendDetailsToServer}>Login</button>
                 </div>
+
               </div>
-              <div
-                className="container "
-                style={{ backgroundColor: "#f1f1f1" }}
-              ></div>
+              <div className="container " style={{ backgroundColor: '#f1f1f1' }}>
+
+              </div>
             </form>
           </Card>
         </div>
+
       </div>
-    );
+
+    )
   }
 }
 
-export default HOC1(Login);
+export default (Login)
