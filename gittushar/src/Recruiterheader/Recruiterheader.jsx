@@ -3,6 +3,7 @@ import "./Recruiterheader.css"
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 class Recruiterheader extends Component {
     render() {
         return (
@@ -14,8 +15,9 @@ class Recruiterheader extends Component {
 {""}
     </Grid>
     <Grid item md={4}>
-<input/>
+<input className="inputbox"/>
 <SearchIcon className="foriconsearch mt-2"/>
+<NotificationsActiveIcon className="notification"/>
     </Grid>
     <Grid item md={4}>
 <AccountCircleIcon className="usericon"/>

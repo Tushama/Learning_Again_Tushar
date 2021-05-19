@@ -11,3 +11,11 @@
 .usericon{
     font-size: 25px !important;
 }
+.inputbox{
+    outline: none;
+    border-radius: 7px;
+}
+.notification{
+    float: right !important;
+    font-size: 25px !important;
+}
