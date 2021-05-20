@@ -16,16 +16,19 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card1">
 <b>Total Registered Users</b>
+<p>50</p>
 </Card>
                     </Grid>
                     <Grid item md={5}>
 <Card className="middlecard">
 <b>Total Verified Users</b>
+<p>45</p>
 </Card>
                     </Grid>
                     <Grid item md={3}>
 <Card className="card3 ">
 <b>Total Unverified Users</b>
+<p>23</p>
 </Card>
                     </Grid>
                 </Grid>
@@ -49,9 +52,11 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card3">
 <b>Total Resume</b>
+<p>65</p>
 </Card>
 <Card className="card3">
 <b>Total Live Resume</b>
+<p>10</p>
 </Card>
                     </Grid>
                 </Grid>
