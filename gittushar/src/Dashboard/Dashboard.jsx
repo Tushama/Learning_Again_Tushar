@@ -7,6 +7,7 @@ import "./Dashboard.css";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Table } from "@material-ui/core";
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -21,13 +22,19 @@ class Dashboard extends Component {
   //         name: this.props.location.state.name
   //     })
   // }
+  Reload =()=>{
+    window.location.reload()
+  }
   render() {
     return (
       <div className="rex">
+          <RefreshIcon className="reload" onClick={this.Reload}/>
+       
         <div
           style={{ fontFamily: "arial", width: "100%" }}
           className=" employercard"
         >
+        
           <Card className="cardcoloremploy">
             <div>
               Account Payable

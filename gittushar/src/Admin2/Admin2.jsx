@@ -3,10 +3,57 @@ import HOC from "../HOC"
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import "./Admin2.css";
+import axios from "axios";
+import RefreshIcon from '@material-ui/icons/Refresh';
 class Admin2 extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+           id:"",
+           Veryfied_user:"",
+           Un_verified_user:"",
+           Total_User:"",
+           Total_Resume:"",
+           Total_Live:"",
+           Total_Deleted_Request:"",
+           Total_Draft:"",
+      
+          }
+     
+    }
+
+    Reload =()=>{
+        window.location.reload()
+      }
+      componentDidMount=()=>{
+        let url =
+        "http://seo.srcservicesltd.com:8000" +
+        "/count_statics" 
+    
+       
+      axios.get(url).then(
+        (response) => { 
+            console.log("======",response)
+          this.setState({
+            id:response.data.id,
+            Veryfied_user:response.data.data.Veryfied_user,
+            Un_verified_user:response.data.Un_verified_user,
+            Total_User:response.data.data.Total_User,
+            Total_Resume:response.data.data.Total_Resume,
+            Total_Live:response.data.data.Total_Live,
+            Total_Deleted_Request:response.data.data.Total_Deleted_Request,
+            Total_Draft:response.data.data.Total_Draft,
+          });
+        },
+  
+        (error) => {}
+      );
+      }
+
     render() {
         return (
             <div>
+                   <RefreshIcon className="reload" onClick={this.Reload}/>
                 <div className="allcard">
                 <div>
                 <Grid container>
@@ -22,7 +69,7 @@ class Admin2 extends Component {
                     <Grid item md={5}>
 <Card className="middlecard">
 <b>Total Verified Users</b>
-<p>45</p>
+<p>{this.state.Veryfied_user}</p>
 </Card>
                     </Grid>
                     <Grid item md={3}>
