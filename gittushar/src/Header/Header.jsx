@@ -17,31 +17,32 @@ class Header extends Component {
   //          name: this.props.location.state.name,
   //      })
   //  }
-  imageHandler = () => {
-    this.props.location.push("/login");
-  };
+
   Home = () => {
     this.props.location.push("/home");
+  };
+  logouthandler = () => {
+    this.props.location.push("/login");
   };
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <a
           className="navbar-brand"
-          style={{ marginLeft: "5%", marginBottom: "1%" ,marginTop:"-1%" }}
+          style={{ marginLeft: "5%", marginBottom: "1%", marginTop: "-1%" }}
         >
           <img src={logo} width="100" height="40" alt="" />
         </a>
         <div className="row w-100">
           <div className="col-7">
-            <ul className="navbar-nav ml-5" >
+            <ul className="navbar-nav ml-5">
               <li class="nav-item">
-                <a class="nav-link text-light" href="/admin2" >
+                <a class="nav-link text-light" href="/admin2">
                   Admin
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#" >
+                <a class="nav-link text-light" href="#">
                   Home
                 </a>
               </li>
@@ -68,7 +69,15 @@ class Header extends Component {
 
               <span>
                 <NotificationsActiveIcon className="buttonuser ml-3 mr-3" />
-                <AccountCircleIcon className="buttonuser ml-3" />
+                <div class="dropdown">
+                  <span>
+                    {" "}
+                    <AccountCircleIcon className="buttonuser ml-3" />
+                  </span>
+                  <div class="dropdown-content">
+                    <p onClick={this.logouthandler}>Logout</p>
+                  </div>
+                </div>
               </span>
             </form>
           </div>
@@ -129,4 +138,3 @@ class Header extends Component {
 }
 
 export default Header;
-
