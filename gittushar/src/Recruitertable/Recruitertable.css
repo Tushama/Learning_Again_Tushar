@@ -1,7 +1,10 @@
-.fortable{
-    margin-right: auto;
-    margin-left: 7%;
-    padding: auto;
-    width: 90%;
-    background-color: silver;
+.displaytable{
+    padding-right: 5px;
+    width: 89%;
+    border: solid rgb(206, 203, 203);
+    cursor: pointer;
+}
+.blankspace{
+    width: 100%;
+    height: 100px;
 }
