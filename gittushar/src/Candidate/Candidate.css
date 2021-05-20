@@ -4,4 +4,30 @@
     padding: auto;
     width: 90%;
     background-color: silver;
+}.displaying{
+    cursor: pointer;
+    padding-right: 5px;
+    border:  rgb(58, 56, 56) !important;
+    width: 89%;
+
+    
 }
+.space{
+    height: 100px;
+    width: 100%;
+    
+}
+.colorback{
+    background-color: rgb(198, 198, 199);
+}
+.tableoutline {
+    border: 1px solid black !important;
+  }
+  
+.table {
+    border-collapse: collapse;
+  }
+  .deletebutton{
+      font-size: 17px !important;
+      color:rgb(95,158,160) !important;
+  }
