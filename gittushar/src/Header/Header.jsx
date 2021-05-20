@@ -3,6 +3,8 @@ import "./Header.css";
 import logo from "../images/logo.PNG";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
+import SearchIcon from "@material-ui/icons/Search";
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -23,74 +25,108 @@ class Header extends Component {
   };
   render() {
     return (
-      <div>
-        <div>
-          <nav className="navbar navbar-inverse">
-            <a class="navbar-brand" href="#">
-              <img
-                onClick={this.imageHandler}
-                src={logo}
-                width="50"
-                height="50"
-                className="d-inline-block align-top logo"
-                alt=""
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+        <a
+          className="navbar-brand"
+          style={{ marginLeft: "5%", marginBottom: "2%" ,marginTop:"-1%" }}
+        >
+          <img src={logo} width="100" height="50" alt="" />
+        </a>
+        <div className="row w-100">
+          <div className="col-7">
+            <ul className="navbar-nav ml-5" >
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/admin2" style={{color:"yellow"}}>
+                  Admin
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#" style={{color:"yellow"}}>
+                  Home
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-5">
+            <form class="form-inline my-2 my-lg-0 ">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
               />
-            </a>
-            <div>
-              <ul className="nav navbar-nav websitename">
-                <li>
-                  <a className="navigationcss" href="/admin2">
-                    Admin
-                  </a>
-                </li>
 
-                <li onClick={this.Home}>
-                  <a className="navigationcss">Home</a>
-                </li>
-                <li>
-                  <a className="navigationcss" href="#">
-                    Development
-                  </a>
-                </li>
-                <li>
-                  <a className="navigationcss" href="#">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a className="navigationcss" href="#">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-              <form className="navbar-form navbar-left searchfortushar">
-                {/* <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control "
-                    placeholder="Search"
-                    name="search"
-                  />
+              <SearchIcon
+                style={{
+                  color: "red",
+                  position: "relative",
+                  marginLeft: "-7%",
+                  height: 30,
+                  width: 25,
+                }}
+              />
 
-                  <div className="input-group-btn">
-                    <button className="btn btn-default icontest" type="submit">
-                      <i className="glyphicon glyphicon-search " />
-                    </button>
-                  </div>
-                </div> */}
-                <NotificationsActiveIcon className="buttonuser" />
-              </form>
-              <div>
-                <AccountCircleIcon className="buttonuser" />
-
-                <h1> {this.state.name} </h1>
-              </div>
-            </div>
-          </nav>
+              <span>
+                <NotificationsActiveIcon className="buttonuser ml-3 mr-3" />
+                <AccountCircleIcon className="buttonuser ml-3" />
+              </span>
+            </form>
+          </div>
         </div>
-      </div>
+      </nav>
+      // <div>
+
+      //   <div>
+      //     <nav className="navbar navbar-inverse">
+      //       <a class="navbar-brand" href="#">
+      //         <img
+      //           onClick={this.imageHandler}
+      //           src={logo}
+      //           width="50"
+      //           height="50"
+      //           className="d-inline-block align-top logo"
+      //           alt=""
+      //         />
+      //       </a>
+      //       <div>
+      //         <ul className="nav navbar-nav websitename">
+      //           <li>
+      //             <a className="navigationcss" href="/admin2">
+      //               Admin
+      //             </a>
+      //           </li>
+
+      //           <li onClick={this.Home}>
+      //             <a className="navigationcss">Home</a>
+      //           </li>
+
+      //         </ul>
+      //         <form class="form-inline my-2 my-lg-0">
+      //           <input
+      //             class="form-control mr-sm-2"
+      //             type="search"
+      //             placeholder="Search"
+      //             aria-label="Search"
+      //           />
+      //           <button
+      //             class="btn btn-outline-success my-2 my-sm-0"
+      //             type="submit"
+      //           >
+      //             Search
+      //           </button>
+      //         </form>
+      //         <div>
+      //           <AccountCircleIcon className="buttonuser" />
+
+      //           <h1> {this.state.name} </h1>
+      //         </div>
+      //       </div>
+      //     </nav>
+      //   </div>
+      // </div>
     );
   }
 }
 
 export default Header;
+
