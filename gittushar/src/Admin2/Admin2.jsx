@@ -3,6 +3,7 @@ import HOC from "../HOC"
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import "./Admin2.css";
+import axios from "axios";
 import RefreshIcon from '@material-ui/icons/Refresh';
 class Admin2 extends Component {
     constructor(props) {
@@ -13,6 +14,23 @@ class Admin2 extends Component {
     Reload =()=>{
         window.location.reload()
       }
+      componentDidMount=()=>{
+        let url =
+        "http://seo.srcservicesltd.com:8000" +
+        "/count_statics" 
+    
+       
+      axios.get(url).then(
+        (response) => { 
+          this.setState({
+           
+          });
+        },
+  
+        (error) => {}
+      );
+      }
+
     render() {
         return (
             <div>
