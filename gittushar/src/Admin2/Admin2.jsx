@@ -6,6 +6,7 @@ import "./Admin2.css";
 import axios from "axios";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Circular } from 'react-graphical-ui';
+import { Histogram } from 'react-graphical-ui';
 class Admin2 extends Component {
     constructor(props) {
         super(props)
@@ -64,19 +65,23 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card1">
 <b>Total Registered Users</b>
-<p>{this.state.Total_User}</p>
+
+<Circular value={this.state.Total_User}  max={100} display="inline" withGrid={false} />
 </Card>
                     </Grid>
                     <Grid item md={5}>
 <Card className="middlecard">
 <b>Total Verified Users</b>
-<p>{this.state.Veryfied_user}</p>
+
+<Circular value={this.state.Veryfied_user}  max={100} display="inline" withGrid={false} />
 </Card>
                     </Grid>
                     <Grid item md={3}>
 <Card className="card3 ">
 <b>Total Unverified Users</b>
-<p>{this.state.Un_verified_user}</p>
+
+<Circular value={this.state.Un_verified_user}  max={5} display="inline" withGrid={false} />
+
 </Card>
                     </Grid>
                 </Grid>
@@ -87,28 +92,24 @@ class Admin2 extends Component {
                 <Grid item md={1}>
 
                     </Grid>
-                    <Grid item md={4}>
+                    <Grid item md={8}>
 <Card className="cardr1">
 {/* <img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/> */}
-<Circular value={this.state.Total_Draft}  max={100} display="inline" withGrid={true} />
+<Histogram values={[47,100,32,45,67,89,32]} max={100} notAllreadyFull={true} withGrid={true} gridDivisionCount={10} display="" size={12} />
 <h1>Total Draft</h1>
 </Card>
                     </Grid>
-                    <Grid item md={4}>
-<Card className="cardr2">
-{/* <img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/> */}
-<Circular value={this.state.Total_Deleted_Request}  max={100} display="inline" withGrid={true} />
-<h1>Total Deleted Request</h1>
-</Card>
-                    </Grid>
+                 
                     <Grid item md={3}>
 <Card className="card3">
 <b>Total Resume</b>
-<p>{this.state.Total_Resume}</p>
+
+<Circular value={this.state.Total_Resume}  max={1000} display="inline" withGrid={false} />
 </Card>
 <Card className="card3">
 <b>Total Live Resume</b>
-<p>{this.state.Total_Live}</p>
+
+<Circular value={this.state.Total_Live}  max={100} display="inline" withGrid={false} />
 </Card>
                     </Grid>
                 </Grid>
