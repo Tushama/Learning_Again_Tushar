@@ -23,7 +23,6 @@ class Header extends Component {
         <div>
           <nav className="navbar navbar-inverse">
             <div className="">
-                          
               <ul className="nav navbar-nav websitename">
                 <li>
                   <a className="navigationcss" href="/admin2">
