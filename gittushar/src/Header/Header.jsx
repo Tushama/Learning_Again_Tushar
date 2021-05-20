@@ -4,6 +4,7 @@ import logo from "../images/logo.PNG";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import SearchIcon from "@material-ui/icons/Search";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 class Header extends Component {
   constructor(props) {
@@ -69,10 +70,12 @@ class Header extends Component {
 
               <span>
                 <NotificationsActiveIcon className="buttonuser ml-3 mr-3" />
+                <AccountCircleIcon className="buttonuser ml-3" />
+                
                 <div class="dropdown">
                   <span>
                     {" "}
-                    <AccountCircleIcon className="buttonuser ml-3" />
+                    <ArrowDropDownIcon className="buttonuser ml-3"/>
                   </span>
                   <div class="dropdown-content">
                     <p onClick={this.logouthandler}>Logout</p>
