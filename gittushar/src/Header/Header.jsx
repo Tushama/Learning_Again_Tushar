@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
+import logo from "../images/logo.PNG";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 class Header extends Component {
@@ -14,6 +15,9 @@ class Header extends Component {
   //          name: this.props.location.state.name,
   //      })
   //  }
+  imageHandler = () => {
+    this.props.location.push("/login");
+  };
   Home = () => {
     this.props.location.push("/home");
   };
@@ -22,7 +26,17 @@ class Header extends Component {
       <div>
         <div>
           <nav className="navbar navbar-inverse">
-            <div className="">
+            <a class="navbar-brand" href="#">
+              <img
+                // onClick={this.imageHandler}
+                src={logo}
+                width="50"
+                height="50"
+                className="d-inline-block align-top logo"
+                alt=""
+              />
+            </a>
+            <div>
               <ul className="nav navbar-nav websitename">
                 <li>
                   <a className="navigationcss" href="/admin2">
@@ -50,24 +64,11 @@ class Header extends Component {
                 </li>
               </ul>
               <form className="navbar-form navbar-left searchfortushar">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control "
-                    placeholder="Search"
-                    name="search"
-                  />
-
-                  <div className="input-group-btn">
-                    <button className="btn btn-default icontest" type="submit">
-                      <i className="glyphicon glyphicon-search " />
-                    </button>
-                  </div>
-                </div>
-                <NotificationsActiveIcon style={{ color: "white" }} />
+                <NotificationsActiveIcon className="buttonuser" />
               </form>
               <div>
                 <AccountCircleIcon className="buttonuser" />
+
                 <h1> {this.state.name} </h1>
               </div>
             </div>

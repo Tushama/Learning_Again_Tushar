@@ -6,7 +6,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import DetailsIcon from "@material-ui/icons/Details";
 import ChildFriendlyIcon from "@material-ui/icons/ChildFriendly";
 
-
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +20,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
+       
         <SideNav className="sidebarfull" onSelect={(selected) => {}}>
           <SideNav.Toggle />
           <SideNav.Nav>
