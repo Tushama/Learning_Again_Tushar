@@ -54,37 +54,23 @@ componentDidMount=()=>{
     </tr>
   </thead>
 
-      {/* {this.state.alldata.map(()=>{ */}
+    
 
 
 <tbody>
+{this.state.alldata.map((item,index)=>(
 <tr>
-<th>1</th>
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
+<th>{item.id}</th>
+<th scope="col"><p>{item.Project_Title}</p></th>
+<th scope="col"><p>{item.Project_Status}</p></th>
+<th scope="col"><p>{item.Last_modification}</p></th>
 <th scope="col"><p>fgdxgdf</p></th >
 
 
 
 </tr>
-<tr>
-      <th scope="row">1</th>
-     
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-    
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-<th scope="col"><p>fgdxgdf</p></th >
-    </tr>
-      {/* })} */}
+
+))}
   
   </tbody>
 </table>
