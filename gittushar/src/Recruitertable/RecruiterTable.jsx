@@ -30,12 +30,12 @@ class RecruiterTable extends Component {
     return (
         <div >
             <div className="blankspace">
-
+                <h1>Recruiter</h1>
             </div>
             <div className="displaytable1">
            <table className="table table-striped displaytable">
 <thead>
-<tr>
+<tr className="colorback">
 <th scope="row">id</th>
   <th scope="col">Project Name</th>
   <th scope="col">Status</th>
@@ -54,7 +54,7 @@ class RecruiterTable extends Component {
 <th scope="col"><p>{item.Project_Title}</p></th>
 <th scope="col"><p>{item.Project_Status}</p></th>
 <th scope="col"><p>{item.Last_modification}</p></th>
-<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p></p></th >
 </tr>
 
 ))}
