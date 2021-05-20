@@ -28,7 +28,7 @@ class Header extends Component {
           <nav className="navbar navbar-inverse">
             <a class="navbar-brand" href="#">
               <img
-                // onClick={this.imageHandler}
+                onClick={this.imageHandler}
                 src={logo}
                 width="50"
                 height="50"
@@ -47,7 +47,7 @@ class Header extends Component {
                 <li onClick={this.Home}>
                   <a className="navigationcss">Home</a>
                 </li>
-                {/* <li>
+                <li>
                   <a className="navigationcss" href="#">
                     Development
                   </a>
@@ -61,13 +61,13 @@ class Header extends Component {
                   <a className="navigationcss" href="#">
                     Contact Us
                   </a>
-                </li> */}
+                </li>
               </ul>
               <form className="navbar-form navbar-left searchfortushar">
-                <div className="input-group">
+                {/* <div className="input-group">
                   <input
                     type="text"
-                    className="form-control searchbar"
+                    className="form-control "
                     placeholder="Search"
                     name="search"
                   />
@@ -77,7 +77,7 @@ class Header extends Component {
                       <i className="glyphicon glyphicon-search " />
                     </button>
                   </div>
-                </div>
+                </div> */}
                 <NotificationsActiveIcon className="buttonuser" />
               </form>
               <div>
