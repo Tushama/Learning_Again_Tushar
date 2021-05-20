@@ -5,7 +5,7 @@
 .card1{
     height: 150px;
     width: 95%;
-    background-color: rgb(223, 224, 206) !important;
+    background-color: white !important;
     margin-top: 4%;
     border: 0px solid ;
     padding: 10px;
@@ -14,7 +14,7 @@
 .card3{
     height: 150px;
     width: 95%;
-    background-color: rgb(240, 240, 243) !important;
+    background-color: white !important;
     margin-left: 5%;
     margin-top: 4%;
     border: 0px solid ;
@@ -23,7 +23,7 @@
 }
 .middlecard{
     height: 150px;
-    background-color: rgb(245, 240, 240) !important;
+    background-color: white !important;
     justify-content:space-around;
     margin-top: 2%;
     border: 0px solid ;
@@ -33,7 +33,7 @@
 .cardr1{
     height: 310px;
     width: 95%;
-    background-color: rgb(224, 224, 215) !important;
+    background-color: white !important;
     margin-top: 4%;
     border: 0px solid ;
     padding: 10px;
@@ -42,7 +42,7 @@
 }
 .cardr2{
     height:310px;
-    background-color: rgb(243, 237, 237) !important;
+    background-color: white !important;
     justify-content:space-around;
     margin-top: 4%;
     border: 0px solid ;
