@@ -1,8 +1,8 @@
 .searchfortushar {
-  margin-left: 19%;
+  
 }
 .icontest {
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
 }
 
 .buttonuser {
@@ -27,5 +27,12 @@
 .logo {
   margin-left: 54px;
   width: 71%;
-  height: 40px;
+  height: 30px;
+}
+
+@media (min-width: 768px){
+.navbar-form .input-group {
+    /* display: inline-table; */
+    vertical-align: middle !important;
+}
 }

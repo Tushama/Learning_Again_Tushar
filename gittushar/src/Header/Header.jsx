@@ -47,7 +47,7 @@ class Header extends Component {
                 <li onClick={this.Home}>
                   <a className="navigationcss">Home</a>
                 </li>
-                <li>
+                {/* <li>
                   <a className="navigationcss" href="#">
                     Development
                   </a>
@@ -61,9 +61,23 @@ class Header extends Component {
                   <a className="navigationcss" href="#">
                     Contact Us
                   </a>
-                </li>
+                </li> */}
               </ul>
               <form className="navbar-form navbar-left searchfortushar">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control searchbar"
+                    placeholder="Search"
+                    name="search"
+                  />
+
+                  <div className="input-group-btn">
+                    <button className="btn btn-default icontest" type="submit">
+                      <i className="glyphicon glyphicon-search " />
+                    </button>
+                  </div>
+                </div>
                 <NotificationsActiveIcon className="buttonuser" />
               </form>
               <div>
