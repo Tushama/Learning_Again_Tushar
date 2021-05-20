@@ -3,10 +3,20 @@ import HOC from "../HOC"
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import "./Admin2.css";
+import RefreshIcon from '@material-ui/icons/Refresh';
 class Admin2 extends Component {
+    constructor(props) {
+        super(props);
+     
+    }
+
+    Reload =()=>{
+        window.location.reload()
+      }
     render() {
         return (
             <div>
+                   <RefreshIcon className="reload" onClick={this.Reload}/>
                 <div className="allcard">
                 <div>
                 <Grid container>

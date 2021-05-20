@@ -8,6 +8,13 @@
    display: flex !important;
    flex-wrap: wrap;
 }
+.reload{
+    float: right;
+    padding-top: 10px;
+    margin-right: 5%;
+    font-size: 35px !important;
+    cursor: pointer;
+}
 @media screen {
     .dset{
         margin-left: 2% !important;
