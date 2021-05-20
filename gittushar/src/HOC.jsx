@@ -18,7 +18,7 @@ const Update_component =(World)=>{
             <div>
                 
                 <Header/>
-                <Sidebar/>
+                <Sidebar {...this.props}/>
                 <World {...this.props}/>
             </div>
             </Fragment>

@@ -6,13 +6,14 @@ import HomeIcon from "@material-ui/icons/Home";
 import DetailsIcon from "@material-ui/icons/Details";
 import ChildFriendlyIcon from "@material-ui/icons/ChildFriendly";
 
+
 class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   candidateHandler = () => {
-    this.props.push("/Candidate-User");
+    this.props.history.push("/Candidate-User");
   };
   recruiterHandler = () => {
     this.props.history.push("/Recruiter-User");
@@ -34,9 +35,7 @@ class Sidebar extends Component {
               <NavText>
                 <DetailsIcon
                   className="iconstyle"
-                  onClick={() => {
-                    this.candidateHandler();
-                  }}
+                  onClick={this.candidateHandler}
                 />{" "}
                 Candidate
               </NavText>
@@ -46,9 +45,7 @@ class Sidebar extends Component {
               <NavText>
                 <ChildFriendlyIcon
                   className="iconstyle"
-                  onClick={() => {
-                    this.recruiterHandler();
-                  }}
+                  onClick={this.recruiterHandler}
                 />{" "}
                 Recruiter
               </NavText>

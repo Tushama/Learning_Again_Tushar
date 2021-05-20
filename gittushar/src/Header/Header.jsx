@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Header.css";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +21,9 @@ class Header extends Component {
     return (
       <div>
         <div>
-         
           <nav className="navbar navbar-inverse">
             <div className="">
-            
+                          
               <ul className="nav navbar-nav websitename">
                 <li>
                   <a className="navigationcss" href="/admin2">
@@ -58,12 +58,14 @@ class Header extends Component {
                     placeholder="Search"
                     name="search"
                   />
+
                   <div className="input-group-btn">
                     <button className="btn btn-default icontest" type="submit">
                       <i className="glyphicon glyphicon-search " />
                     </button>
                   </div>
                 </div>
+                <NotificationsActiveIcon style={{ color: "white" }} />
               </form>
               <div>
                 <AccountCircleIcon className="buttonuser" />
@@ -72,7 +74,6 @@ class Header extends Component {
             </div>
           </nav>
         </div>
-      
       </div>
     );
   }
