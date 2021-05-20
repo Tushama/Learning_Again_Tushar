@@ -78,61 +78,12 @@ class Header extends Component {
                     <p onClick={this.logouthandler}>Logout</p>
                   </div>
                 </div>
+                {/* <h1> {this.state.name} </h1> */}
               </span>
             </form>
           </div>
         </div>
       </nav>
-      // <div>
-
-      //   <div>
-      //     <nav className="navbar navbar-inverse">
-      //       <a class="navbar-brand" href="#">
-      //         <img
-      //           onClick={this.imageHandler}
-      //           src={logo}
-      //           width="50"
-      //           height="50"
-      //           className="d-inline-block align-top logo"
-      //           alt=""
-      //         />
-      //       </a>
-      //       <div>
-      //         <ul className="nav navbar-nav websitename">
-      //           <li>
-      //             <a className="navigationcss" href="/admin2">
-      //               Admin
-      //             </a>
-      //           </li>
-
-      //           <li onClick={this.Home}>
-      //             <a className="navigationcss">Home</a>
-      //           </li>
-
-      //         </ul>
-      //         <form class="form-inline my-2 my-lg-0">
-      //           <input
-      //             class="form-control mr-sm-2"
-      //             type="search"
-      //             placeholder="Search"
-      //             aria-label="Search"
-      //           />
-      //           <button
-      //             class="btn btn-outline-success my-2 my-sm-0"
-      //             type="submit"
-      //           >
-      //             Search
-      //           </button>
-      //         </form>
-      //         <div>
-      //           <AccountCircleIcon className="buttonuser" />
-
-      //           <h1> {this.state.name} </h1>
-      //         </div>
-      //       </div>
-      //     </nav>
-      //   </div>
-      // </div>
     );
   }
 }
