@@ -20,8 +20,6 @@ class Login extends Component {
 
 // create function for sending details to the backend
  sendDetailsToServer = () => {
-  
-  
   if (this.state.username == "") {
     Swal.fire({
       icon: 'error',
