@@ -23,7 +23,7 @@ function App() {
           <Route path="/admin2" component={Admin2}></Route>
           <Route path="/Candidate-User" component={Candidate}></Route>
           <Route path="/Recruiter-User" component={Recruiter}></Route>
-          <Route path="/recruitertable" component={RecruiterTable}></Route>
+          <Route path="/recruiter-dashboard" component={RecruiterTable}></Route>
         </Switch>
       </BrowserRouter>
     </div>

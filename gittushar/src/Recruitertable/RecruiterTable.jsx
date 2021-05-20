@@ -7,7 +7,15 @@ class RecruiterTable extends Component {
     constructor(props){
     super(props)
     this.state = {
-alldata:[],
+alldata:[
+    {
+        projectname:"tushar",
+        status:"read",
+        lastmodified:"1/2/2021",
+
+    }
+],
+
     }
 };
 componentDidMount=()=>{
@@ -17,9 +25,10 @@ componentDidMount=()=>{
    
   axios.get(url).then(
     (response) => { 
-        console.log("======",response.data.data)
+        console.log("======alldata",response.data.data)
       this.setState({
     alldata:response.data.data,
+    
       });
     },
 
@@ -29,26 +38,57 @@ componentDidMount=()=>{
 
     render() {
         return (
-            <div>
-                <div className="ml-5">
-            <MaterialTable
-            style={{
-               marginLeft:"5%",
-                width: "85%",
-                paddingLeft:"10%",
-              
-              }}
-              
-           
-              columns={[
-                { title: 'id', field: 'id' },
-                { title: 'Project Name', field: 'Project_Title'},
-                { title: 'Status', field: 'Project_Status'},
-                { title: 'Last Modified Date', field: 'Last_modification',}
-              ]}
-              data={this.state.alldata}
-              title="Recruiter Table"
-            />
+            <div >
+                <div className="blankspace">
+
+                </div>
+                <div className="displaytable1">
+               <table className="table table-striped displaytable">
+  <thead>
+    <tr>
+    <th scope="row">id</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Last Modified Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+      {/* {this.state.alldata.map(()=>{ */}
+
+
+<tbody>
+<tr>
+<th>1</th>
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+
+
+
+</tr>
+<tr>
+      <th scope="row">1</th>
+     
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+    
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+<th scope="col"><p>fgdxgdf</p></th >
+    </tr>
+      {/* })} */}
+  
+  </tbody>
+</table>
+</div>
           </div>
           
 
@@ -56,7 +96,7 @@ componentDidMount=()=>{
          
             
  
-      </div>
+
       
         );
     }

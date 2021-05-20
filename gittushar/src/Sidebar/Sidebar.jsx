@@ -15,7 +15,7 @@ class Sidebar extends Component {
     this.props.history.push("/Candidate-User");
   };
   recruiterHandler = () => {
-    this.props.history.push("/Recruiter-User");
+    this.props.history.push("/recruitertable");
   };
   render() {
     return (
