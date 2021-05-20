@@ -71,8 +71,7 @@ class Admin2 extends Component {
                     </Grid>
                     <Grid item md={5}>
 <Card className="middlecard">
-<b>Total Verified Users</b>
-
+<b>Total Verified</b>
 <Circular value={this.state.Veryfied_user}  max={100} display="inline" withGrid={false} />
 </Card>
                     </Grid>
