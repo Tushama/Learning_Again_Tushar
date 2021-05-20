@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import "./Admin2.css";
 import axios from "axios";
 import RefreshIcon from '@material-ui/icons/Refresh';
+import { Circular } from 'react-graphical-ui';
 class Admin2 extends Component {
     constructor(props) {
         super(props)
@@ -37,7 +38,7 @@ class Admin2 extends Component {
           this.setState({
             id:response.data.id,
             Veryfied_user:response.data.data.Veryfied_user,
-            Un_verified_user:response.data.Un_verified_user,
+            Un_verified_user:response.data.data.Un_verified_user,
             Total_User:response.data.data.Total_User,
             Total_Resume:response.data.data.Total_Resume,
             Total_Live:response.data.data.Total_Live,
@@ -53,7 +54,7 @@ class Admin2 extends Component {
     render() {
         return (
             <div>
-                   <RefreshIcon className="reload" onClick={this.Reload}/>
+                   <RefreshIcon className="reload1" onClick={this.Reload}/>
                 <div className="allcard">
                 <div>
                 <Grid container>
@@ -63,7 +64,7 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card1">
 <b>Total Registered Users</b>
-<p>50</p>
+<p>{this.state.Total_User}</p>
 </Card>
                     </Grid>
                     <Grid item md={5}>
@@ -75,7 +76,7 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card3 ">
 <b>Total Unverified Users</b>
-<p>23</p>
+<p>{this.state.Un_verified_user}</p>
 </Card>
                     </Grid>
                 </Grid>
@@ -88,22 +89,26 @@ class Admin2 extends Component {
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr1">
-<img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/>
+{/* <img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/> */}
+<Circular value={this.state.Total_Draft}  max={100} display="inline" withGrid={true} />
+<h1>Total Draft</h1>
 </Card>
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr2">
-<img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/>
+{/* <img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/> */}
+<Circular value={this.state.Total_Deleted_Request}  max={100} display="inline" withGrid={true} />
+<h1>Total Deleted Request</h1>
 </Card>
                     </Grid>
                     <Grid item md={3}>
 <Card className="card3">
 <b>Total Resume</b>
-<p>65</p>
+<p>{this.state.Total_Resume}</p>
 </Card>
 <Card className="card3">
 <b>Total Live Resume</b>
-<p>10</p>
+<p>{this.state.Total_Live}</p>
 </Card>
                     </Grid>
                 </Grid>
