@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import "./Admin2.css";
 import axios from "axios";
 import RefreshIcon from '@material-ui/icons/Refresh';
+import { Circular } from 'react-graphical-ui';
 class Admin2 extends Component {
     constructor(props) {
         super(props)
@@ -53,7 +54,7 @@ class Admin2 extends Component {
     render() {
         return (
             <div>
-                   <RefreshIcon className="reload" onClick={this.Reload}/>
+                   <RefreshIcon className="reload1" onClick={this.Reload}/>
                 <div className="allcard">
                 <div>
                 <Grid container>
@@ -88,12 +89,16 @@ class Admin2 extends Component {
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr1">
-<img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/>
+{/* <img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/> */}
+<Circular value={this.state.Total_Draft}  max={100} display="inline" withGrid={true} />
+<h1>Total Draft</h1>
 </Card>
                     </Grid>
                     <Grid item md={4}>
 <Card className="cardr2">
-<img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/>
+{/* <img className="imagedemo" src ="https://www.officetooltips.com/images/tips/184_2016/7.png"/> */}
+<Circular value={this.state.Total_Deleted_Request}  max={100} display="inline" withGrid={true} />
+<h1>Total Deleted Request</h1>
 </Card>
                     </Grid>
                     <Grid item md={3}>

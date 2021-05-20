@@ -21,6 +21,12 @@
     padding: 10px;
     box-shadow: 4px 4px 4px 4px #8d8b8b !important;
 }
+.reload1{
+    float: right;
+    margin-right: 5%;
+    font-size: 25px !important;
+    cursor: pointer;
+}
 .middlecard{
     height: 150px;
     background-color: white !important;
