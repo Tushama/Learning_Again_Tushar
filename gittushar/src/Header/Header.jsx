@@ -28,20 +28,20 @@ class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <a
           className="navbar-brand"
-          style={{ marginLeft: "5%", marginBottom: "2%" ,marginTop:"-1%" }}
+          style={{ marginLeft: "5%", marginBottom: "1%" ,marginTop:"-1%" }}
         >
-          <img src={logo} width="100" height="50" alt="" />
+          <img src={logo} width="100" height="40" alt="" />
         </a>
         <div className="row w-100">
           <div className="col-7">
             <ul className="navbar-nav ml-5" >
               <li class="nav-item">
-                <a class="nav-link text-light" href="/admin2" style={{color:"yellow"}}>
+                <a class="nav-link text-light" href="/admin2" >
                   Admin
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#" style={{color:"yellow"}}>
+                <a class="nav-link text-light" href="#" >
                   Home
                 </a>
               </li>
