@@ -37,7 +37,7 @@ class Admin2 extends Component {
           this.setState({
             id:response.data.id,
             Veryfied_user:response.data.data.Veryfied_user,
-            Un_verified_user:response.data.Un_verified_user,
+            Un_verified_user:response.data.data.Un_verified_user,
             Total_User:response.data.data.Total_User,
             Total_Resume:response.data.data.Total_Resume,
             Total_Live:response.data.data.Total_Live,
@@ -63,7 +63,7 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card1">
 <b>Total Registered Users</b>
-<p>50</p>
+<p>{this.state.Total_User}</p>
 </Card>
                     </Grid>
                     <Grid item md={5}>
@@ -75,7 +75,7 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card3 ">
 <b>Total Unverified Users</b>
-<p>23</p>
+<p>{this.state.Un_verified_user}</p>
 </Card>
                     </Grid>
                 </Grid>
@@ -99,11 +99,11 @@ class Admin2 extends Component {
                     <Grid item md={3}>
 <Card className="card3">
 <b>Total Resume</b>
-<p>65</p>
+<p>{this.state.Total_Resume}</p>
 </Card>
 <Card className="card3">
 <b>Total Live Resume</b>
-<p>10</p>
+<p>{this.state.Total_Live}</p>
 </Card>
                     </Grid>
                 </Grid>
