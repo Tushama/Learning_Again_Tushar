@@ -11,10 +11,14 @@
 .colorback{
     background-color: rgb(198, 198, 199);
 }
-.table,tr {
-    border: 1px solid black;
+.tableoutline {
+    border: 1px solid black !important;
   }
   
 .table {
     border-collapse: collapse;
+  }
+  .deleteicon{
+      font-size: 17px !important;
+      color: black;
   }
