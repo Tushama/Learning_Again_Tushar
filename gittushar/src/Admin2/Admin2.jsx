@@ -15,17 +15,17 @@ class Admin2 extends Component {
                     </Grid>
                     <Grid item md={3}>
 <Card className="card1">
-hello
+<b>Total Registered Users</b>
 </Card>
                     </Grid>
                     <Grid item md={5}>
 <Card className="middlecard">
-tushar
+<b>Total Verified Users</b>
 </Card>
                     </Grid>
                     <Grid item md={3}>
 <Card className="card3 ">
-sharma
+<b>Total Unverified Users</b>
 </Card>
                     </Grid>
                 </Grid>
@@ -48,10 +48,10 @@ sharma
                     </Grid>
                     <Grid item md={3}>
 <Card className="card3">
-sharma
+<b>Total Resume</b>
 </Card>
 <Card className="card3">
-sharma
+<b>Total Live Resume</b>
 </Card>
                     </Grid>
                 </Grid>
