@@ -12,7 +12,7 @@ alldata:[],
 };
 componentDidMount=()=>{
     let url =
-    "http://seo.srcservicesltd.com:8000/projectlist/all/0" 
+    "http://seo.srcservicesltd.com:8000/projectlist/all/0"
 
    
   axios.get(url).then(
@@ -30,14 +30,19 @@ componentDidMount=()=>{
     render() {
         return (
             <div>
-                <div className="fortable">
-            <MaterialTable 
-           
+                <div className="ml-5">
+            <MaterialTable
+            style={{
+               marginLeft:"5%",
+                width: "85%",
+                paddingLeft:"10%",
+              
+              }}
               
            
               columns={[
                 { title: 'id', field: 'id' },
-                { title: 'Project Name', field: 'Project_Title' },
+                { title: 'Project Name', field: 'Project_Title'},
                 { title: 'Status', field: 'Project_Status'},
                 { title: 'Last Modified Date', field: 'Last_modification',}
               ]}
