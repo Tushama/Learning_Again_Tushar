@@ -11,7 +11,9 @@ export class Candidate extends Component {
     super(props);
     this.state = {
       tabledata: [],
-      value:""
+      value: "",
+      userid: "",
+      Id: "",
     };
   }
   componentDidMount = () => {
@@ -28,6 +30,33 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
+  // changeHandler = (e) => {
+  //   alert("hello world");
+  //   console.log("======", e.target.value);
+  //   this.setState({
+  //     value: e.target.value,
+  //   });
+  // };
+  // playAction  = () => {
+  //   let url = "http://seo.srcservicesltd.com:8000/resumelive/280/258";
+
+  //   axios.get(url).then(
+  //     (response) => {
+  //       console.log("======alldata", response.data.data);
+  //       this.setState({
+  //         alldata: response.data.data,
+  //       });
+  //     },
+
+  //     (error) => {}
+  //   );
+  // };
+  // valueHandler  = (e) => {
+  //   this.setState({
+  //     value: e.target.value,
+  //   });
+  //   console.log("bhawna", this.state.value);
+  // };
   render() {
     return (
       <div>
@@ -43,9 +72,13 @@ export class Candidate extends Component {
                 <th scope="col">Last modification</th>
                 <th scope="col">
                   {" "}
-                  <select style={{ color: "black" }}>
-                    status
-                    <option value="0">Status</option>
+                  <select
+                    style={{ color: "black" }}
+                    onChange={(e) => {
+                      this.valueHandler(e.target.value);
+                    }}
+                  >
+                    <option>Status</option>
                     <option value="Drafted">Drafted</option>
                     <option value="Deleted">Deleted</option>
                     <option value="Decline">Decline</option>
@@ -95,7 +128,10 @@ export class Candidate extends Component {
                           });
                         }}
                       />
-                      <PlayCircleOutlineIcon className="deletebutton" />
+                      <PlayCircleOutlineIcon
+                        className="deletebutton"
+                        onClick={this.playAction}
+                      />
                     </label>
                   </th>
                 </tr>
