@@ -14,8 +14,13 @@ class Sidebar extends Component {
   candidateHandler = () => {
     this.props.history.push("/Candidate-User");
   };
+
+  dashboardHandler = () => {
+    this.props.history.push("/dashboard");
+  }
+
   recruiterHandler = () => {
-    this.props.history.push("/recruitertable");
+    this.props.history.push("/recruiter-dashboard");
   };
   render() {
     return (
@@ -24,23 +29,22 @@ class Sidebar extends Component {
         <SideNav className="sidebarfull" onSelect={(selected) => {}}>
           <SideNav.Toggle />
           <SideNav.Nav>
-            <NavItem>
+            <NavItem  onClick={this.dashboardHandler}>
               <NavIcon />
               <NavText>
                 <HomeIcon className="iconstyletext" /> Dashboard
               </NavText>
             </NavItem>
-            <NavItem eventKey="Candidate">
+            <NavItem eventKey="Candidate" onClick={this.candidateHandler}>
               <NavIcon />
               <NavText>
                 <DetailsIcon
                   className="iconstyle"
-                  onClick={this.candidateHandler}
-                />{" "}
+                  />{" "}
                 Candidate
               </NavText>
             </NavItem>
-            <NavItem eventKey=" Recruiter">
+            <NavItem eventKey=" Recruiter" onClick={this.recruiterHandler}>
               <NavIcon />
               <NavText>
                 <ChildFriendlyIcon
