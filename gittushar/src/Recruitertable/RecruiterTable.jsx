@@ -70,7 +70,16 @@ class RecruiterTable extends Component {
                     <p>{item.Project_Status}</p>
                   </th>
                   <th scope="col">
-                    <p>{item.Last_modification}</p>
+                    <p>
+                    {new Intl.DateTimeFormat("en-US", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      
+                    }).format(item.Last_modification)}
+                    </p>
                   </th>
                   <th scope="col">
                     <label>
