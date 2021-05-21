@@ -12,16 +12,50 @@ export class Candidate extends Component {
     this.state = {
       tabledata: [],
       value: "",
-      userid: "",
-      Id: "",
+    
     };
   }
   componentDidMount = () => {
+   
+
     let url = "http://seo.srcservicesltd.com:8000/resumelist/draft/0";
 
     axios.get(url).then(
       (response) => {
-        console.log("thedata", response);
+        let temp = [];
+        
+        
+        
+        response.data.data.map((data) => {
+          temp.push({
+        Id: data.Id,
+            userid: data.userid,
+          });
+        });
+        console.log("thedataaaaaaa", temp);
+        this.setState({
+          tabledata: response.data.data
+        });
+      },
+
+      (error) => {}
+    );
+  };
+  resumeDelete = (tabledata) => {
+    let url = "http://seo.srcservicesltd.com:8000/resume" 
+
+    console.log("bhawna", tabledata);
+    axios.get(url).then(
+      (response) => {},
+      (error) => {}
+    );
+  };
+  playAction = () => {
+    let url = "http://seo.srcservicesltd.com:8000/userid/Id";
+
+    axios.get(url).then(
+      (response) => {
+        console.log("alldataaaaaaaaaaaaaa", response.data.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -37,20 +71,7 @@ export class Candidate extends Component {
   //     value: e.target.value,
   //   });
   // };
-  // playAction  = () => {
-  //   let url = "http://seo.srcservicesltd.com:8000/resumelive/280/258";
 
-  //   axios.get(url).then(
-  //     (response) => {
-  //       console.log("======alldata", response.data.data);
-  //       this.setState({
-  //         alldata: response.data.data,
-  //       });
-  //     },
-
-  //     (error) => {}
-  //   );
-  // };
   // valueHandler  = (e) => {
   //   this.setState({
   //     value: e.target.value,
@@ -117,12 +138,11 @@ export class Candidate extends Component {
                             buttons: [
                               {
                                 label: "Yes",
-
-                                onClick: () => alert("Click Yes"),
+                                onClick: () => this.resumeDelete(item),
                               },
                               {
                                 label: "No",
-                                onClick: () => alert("Click No"),
+                                onClick: () => console.log("Click No"),
                               },
                             ],
                           });
