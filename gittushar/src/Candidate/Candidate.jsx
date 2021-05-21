@@ -12,50 +12,13 @@ export class Candidate extends Component {
     this.state = {
       tabledata: [],
       value: "",
-    
     };
   }
   componentDidMount = () => {
-   
-
     let url = "http://seo.srcservicesltd.com:8000/resumelist/draft/0";
-
     axios.get(url).then(
       (response) => {
-        let temp = [];
-        
-        
-        
-        response.data.data.map((data) => {
-          temp.push({
-        Id: data.Id,
-            userid: data.userid,
-          });
-        });
-        console.log("thedataaaaaaa", temp);
-        this.setState({
-          tabledata: response.data.data
-        });
-      },
-
-      (error) => {}
-    );
-  };
-  resumeDelete = (tabledata) => {
-    let url = "http://seo.srcservicesltd.com:8000/resume" 
-
-    console.log("bhawna", tabledata);
-    axios.get(url).then(
-      (response) => {},
-      (error) => {}
-    );
-  };
-  playAction = () => {
-    let url = "http://seo.srcservicesltd.com:8000/userid/Id";
-
-    axios.get(url).then(
-      (response) => {
-        console.log("alldataaaaaaaaaaaaaa", response.data.data);
+        console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -64,20 +27,38 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
-  // changeHandler = (e) => {
-  //   alert("hello world");
-  //   console.log("======", e.target.value);
-  //   this.setState({
-  //     value: e.target.value,
-  //   });
-  // };
+  resumeDelete = (data) => {
+    try {
+      let url = `http://seo.srcservicesltd.com:8000/resume/${data.userid}/${data.Id}`;
 
-  // valueHandler  = (e) => {
-  //   this.setState({
-  //     value: e.target.value,
-  //   });
-  //   console.log("bhawna", this.state.value);
-  // };
+      console.log("url---------", url);
+      console.log("data we are -------", data);
+      axios.delete(url).then(
+        (response) => {
+          alert(response.data.message);
+          console.log("response for delter", response);
+        },
+        (error) => {
+          console.log("ere", error);
+        }
+      );
+    } catch (error) {
+      console.log("ty err", error);
+    }
+  };
+  playAction = (data) => {
+    let url = `http://seo.srcservicesltd.com:8000/resumelive/${data.userid}/${data.Id}`;
+    console.log("playAction url", url);
+    axios.get(url).then(
+      (response) => {
+        alert(response.data.message);
+        console.log("response play action", response.data);
+      },
+
+      (error) => {}
+    );
+  };
+  
   render() {
     return (
       <div>
@@ -150,7 +131,7 @@ export class Candidate extends Component {
                       />
                       <PlayCircleOutlineIcon
                         className="deletebutton"
-                        onClick={this.playAction}
+                        onClick={() => this.playAction(item)}
                       />
                     </label>
                   </th>
