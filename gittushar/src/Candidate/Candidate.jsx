@@ -62,7 +62,13 @@ export class Candidate extends Component {
                     }).format(item.Last_Modifyed)}
                   </th>
                   <th scope="col">
-                    <p>{item.resume_status}</p>
+                  <select>
+                  <option>{item.resume_status}</option>
+                      <option id="1">Drafted</option>
+                      <option id="2">Live</option>
+                      <option id="2">Decline</option>
+                    </select>
+                   
                   </th>
                   <th scope="col">
                     <label>
