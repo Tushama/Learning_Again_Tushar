@@ -40,7 +40,7 @@ class Login extends Component {
     } 
 
 
-  axios.post("http://seo.srcservicesltd.com:8000/adminute/login" ,{
+  axios.post("http://seo.srcservicesltd.com:8000/adminute/login",{
     "username":this.state.username,
     "password":this.state.password
 }).then((data) =>{

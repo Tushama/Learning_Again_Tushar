@@ -25,8 +25,18 @@ class Admin2 extends Component {
     }
 
     Reload =()=>{
-        window.location.reload()
-      }
+      let url = "http://seo.srcservicesltd.com:8000/Refresh";
+
+      axios.patch(url).then(
+        (response) => {
+          console.log("======alldata", response);
+        
+        },
+  
+        (error) => {}
+      );
+    
+      };
       componentDidMount=()=>{
         let url =
         "http://seo.srcservicesltd.com:8000" +

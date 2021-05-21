@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Table } from "@material-ui/core";
 import RefreshIcon from '@material-ui/icons/Refresh';
+import axios from "axios";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,8 +24,18 @@ class Dashboard extends Component {
   //     })
   // }
   Reload =()=>{
-    window.location.reload()
-  }
+    let url = "http://seo.srcservicesltd.com:8000/Refresh";
+
+    axios.patch(url).then(
+      (response) => {
+        console.log("======alldata", response);
+      
+      },
+
+      (error) => {}
+    );
+  
+  };
   render() {
     return (
       <div className="rex">
