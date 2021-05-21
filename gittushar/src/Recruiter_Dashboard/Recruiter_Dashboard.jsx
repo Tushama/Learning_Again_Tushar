@@ -5,11 +5,12 @@ import HOC from "../HOC";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import Swal from "sweetalert2";
-class RecruiterTable extends Component {
+class RecruiterTable extends Component{
   constructor(props) {
     super(props);
     this.state = {
       alldata: [],
+      value:"",
     };
   }
   componentDidMount = () => {
@@ -41,6 +42,13 @@ class RecruiterTable extends Component {
       }
     });
   };
+  actionchange = (e) => {
+    alert("fgdfgd")
+    console.log("======",e.target.value)
+this.setState({
+  value:e.target.value,
+})
+  }
   render() {
     return (
       <div>
@@ -67,23 +75,26 @@ class RecruiterTable extends Component {
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
-                    <select>
-                  <option value="0">{item.Project_Status}</option>
-                      <option value="1">Live</option>
-                      <option value="2">Decline</option>
+                    <select
+                     
+                      onChange={(e) => this.actionchange(e.target.value)}
+                      value={this.state.value}
+                    >
+                      <option value="Project_Status">{item.Project_Status}</option>
+                      <option value="Drafted">Drafted</option>
+                      <option value="Deleted">Deleted</option>
+                      <option value="Decline">Decline</option>
                     </select>
-                   
                   </th>
                   <th scope="col">
                     <p>
-                    {new Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      
-                    }).format(item.Last_modification)}
+                      {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      }).format(item.Last_modification)}
                     </p>
                   </th>
                   <th scope="col">
@@ -92,10 +103,7 @@ class RecruiterTable extends Component {
                         className="deleteicon"
                         onClick={this.delete}
                       />
-                      <PlayCircleOutlineIcon
-                        className="deleteicon ml-3"
-                        
-                      />
+                      <PlayCircleOutlineIcon className="deleteicon ml-3" />
                     </label>
                   </th>
                 </tr>
