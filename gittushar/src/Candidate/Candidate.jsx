@@ -40,7 +40,16 @@ export class Candidate extends Component {
                 <th scope="col">Id</th>
                 <th scope="col">Candidate Name</th>
                 <th scope="col">Last modification</th>
-                <th scope="col">Status</th>
+                <th scope="col">
+                  {" "}
+                  <select style={{ color: "black" }}>
+                    status
+                    <option value="0">Status</option>
+                    <option value="Drafted">Drafted</option>
+                    <option value="Deleted">Deleted</option>
+                    <option value="Decline">Decline</option>
+                  </select>
+                </th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -58,17 +67,10 @@ export class Candidate extends Component {
                       day: "2-digit",
                       hour: "2-digit",
                       minute: "2-digit",
-                      
                     }).format(item.Last_Modifyed)}
                   </th>
                   <th scope="col">
-                  <select>
-                  <option>{item.resume_status}</option>
-                      <option id="1">Drafted</option>
-                      <option id="2">Live</option>
-                      <option id="2">Decline</option>
-                    </select>
-                   
+                    <p>{item.resume_status}</p>
                   </th>
                   <th scope="col">
                     <label>
