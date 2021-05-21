@@ -5,12 +5,14 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { Redirect } from "react-router";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
+      redirect:false,
     };
   }
   //   componentDidMount = () => {
@@ -23,10 +25,20 @@ class Header extends Component {
     this.props.location.push("/home");
   };
   logouthandler = () => {
-    this.props.location.push("/login");
+  sessionStorage.clear();
+ this.setState({
+   redirect:true
+ })
+  
   };
   render() {
+    if(this.state.redirect){
+      return(
+        <Redirect to={"/login"}/>
+      )
+    }
     return (
+     
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <a
           className="navbar-brand"
@@ -72,7 +84,7 @@ class Header extends Component {
                     {" "}
                     <ArrowDropDownIcon className="buttonuser ml-3"/>
                   </span>
-                  <div class="dropdown-content">
+                  <div class="dropdown-content forlogout">
                     <p onClick={this.logouthandler}>Logout</p>
                   </div>
                 </div>

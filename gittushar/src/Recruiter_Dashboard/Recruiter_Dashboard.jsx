@@ -6,7 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import Swal from "sweetalert2";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
-class RecruiterTable extends Component {
+class Recruiter_Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,9 @@ class RecruiterTable extends Component {
       id: "",
     };
   }
+ 
   componentDidMount = (item) => {
+ 
     let url = "http://seo.srcservicesltd.com:8000/projectlist/all/0";
 
     axios.get(url).then(
@@ -32,6 +34,7 @@ class RecruiterTable extends Component {
       (error) => {}
     );
   };
+
   decline = (item) => {
     // let url = "http://seo.srcservicesltd.com:8000/project/status";
     // let temp = {
@@ -71,7 +74,6 @@ class RecruiterTable extends Component {
   };
   actionlive = () => {
     let url = "http://seo.srcservicesltd.com:8000/ProjectLive/303/384";
-
     axios.get(url).then(
       (response) => {
         console.log("======alldata", response.data.data);
@@ -104,12 +106,10 @@ class RecruiterTable extends Component {
                 <th scope="col">
                   {" "}
                   <select
-                    onChange={(e) => {
-                      this.selectvalue(e.target.value);
-                    }}
+                  
                   >
                     <option>Status</option>
-                    <option value="Drafted">Drafted</option>
+                    <option value="Drafted" onClick={this.componentDidMount} >Drafted</option>
                     <option value="Deleted">Deleted</option>
                     <option value="Decline">Decline</option>
                   </select>
@@ -163,4 +163,4 @@ class RecruiterTable extends Component {
   }
 }
 
-export default HOC(RecruiterTable);
+export default HOC(Recruiter_Dashboard);
