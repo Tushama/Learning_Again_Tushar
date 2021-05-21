@@ -11,6 +11,7 @@ export class Candidate extends Component {
     super(props);
     this.state = {
       tabledata: [],
+      value:""
     };
   }
   componentDidMount = () => {
