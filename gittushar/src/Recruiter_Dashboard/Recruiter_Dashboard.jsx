@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Recruitertable.css";
+import "./Recruiter_Dashboard.css";
 import axios from "axios";
 import HOC from "../HOC";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -48,7 +48,7 @@ class RecruiterTable extends Component {
           <h1>Recruiter</h1>
         </div>
         <div className="displaytable1">
-          <table className="table1 table table-striped displaytable tableoutline">
+          <table className="table1 table table-striped displaytable tableoutline ">
             <thead>
               <tr className="colorback">
                 <th scope="row">id</th>
@@ -68,9 +68,9 @@ class RecruiterTable extends Component {
                   </th>
                   <th scope="col">
                     <select>
-                  <option>{item.Project_Status}</option>
-                      <option id="1">Decline</option>
-                      <option id="2">Approve</option>
+                  <option value="0">{item.Project_Status}</option>
+                      <option value="1">Live</option>
+                      <option value="2">Decline</option>
                     </select>
                    
                   </th>
