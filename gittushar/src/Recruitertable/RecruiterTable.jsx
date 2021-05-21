@@ -67,7 +67,12 @@ class RecruiterTable extends Component {
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
-                    <p>{item.Project_Status}</p>
+                    <select>
+                  <option>{item.Project_Status}</option>
+                      <option id="1">Decline</option>
+                      <option id="2">Approve</option>
+                    </select>
+                   
                   </th>
                   <th scope="col">
                     <p>
@@ -89,7 +94,7 @@ class RecruiterTable extends Component {
                       />
                       <PlayCircleOutlineIcon
                         className="deleteicon ml-3"
-                        onClick={this.delete}
+                        
                       />
                     </label>
                   </th>
