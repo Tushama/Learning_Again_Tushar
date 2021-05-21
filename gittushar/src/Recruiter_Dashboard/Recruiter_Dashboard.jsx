@@ -5,12 +5,12 @@ import HOC from "../HOC";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import Swal from "sweetalert2";
-class RecruiterTable extends Component {
+class RecruiterTable extends Component{
   constructor(props) {
     super(props);
     this.state = {
       alldata: [],
-      value: "",
+      value:"",
     };
   }
   componentDidMount = () => {
@@ -43,12 +43,12 @@ class RecruiterTable extends Component {
     });
   };
   actionchange = (e) => {
-    alert("fgdfgd");
-    console.log("======", e.target.value);
-    this.setState({
-      value: e.target.value,
-    });
-  };
+    alert("fgdfgd")
+    console.log("======",e.target.value)
+this.setState({
+  value:e.target.value,
+})
+  }
   render() {
     return (
       <div>
@@ -61,7 +61,13 @@ class RecruiterTable extends Component {
               <tr className="colorback">
                 <th scope="row">id</th>
                 <th scope="col">Project Name</th>
-                <th scope="col">Status</th>
+                <th scope="col"> <select>
+<option value="0">Status</option>
+<option value="Drafted">Drafted</option>
+<option value="Deleted">Deleted</option>
+<option value="Decline">Decline</option>
+</select></th>
+               
                 <th scope="col">Last Modified Date</th>
                 <th scope="col">Action</th>
               </tr>
@@ -75,15 +81,11 @@ class RecruiterTable extends Component {
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
-                    <select
-                      onChange={(e) => this.actionchange(e.target.value)}
-                      value={this.state.value}
-                    >
-                     
-                      <option value="Drafted">Drafted</option>
-                      <option value="Deleted">Deleted</option>
-                      <option value="Decline">Decline</option>
-                    </select>
+                  
+
+                    
+                   <p>  {item.Project_Status}</p>
+                      
                   </th>
                   <th scope="col">
                     <p>
