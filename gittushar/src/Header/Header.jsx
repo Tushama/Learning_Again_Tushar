@@ -38,11 +38,6 @@ class Header extends Component {
           <div className="col-7">
             <ul className="navbar-nav ml-5">
               <li class="nav-item">
-                <a class="nav-link text-light" href="/admin2">
-                  Admin
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link text-light" href="#">
                   Home
                 </a>
