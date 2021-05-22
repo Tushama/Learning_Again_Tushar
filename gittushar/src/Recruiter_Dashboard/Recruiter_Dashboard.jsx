@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Recruiter_Dashboard.css";
 import axios from "axios";
+import CloseIcon from '@material-ui/icons/Close';
 import HOC from "../HOC";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
@@ -20,6 +21,10 @@ class Recruiter_Dashboard extends Component {
       value: "",
       id: "",
       projectopen:false,
+      Project_Title:"",
+      Project_Description:"",
+      Budget_Limit:"",
+      Budget_Currency:"",
     };
   }
  
@@ -114,6 +119,12 @@ class Recruiter_Dashboard extends Component {
         console.log("======alldata", response);
         this.setState({
           projectopen:true,
+          Project_Title:response.data.project.Project_Title,
+          Project_Description:response.data.project.Project_Description,
+          Budget_Limit:response.data.project.Budget_Limit,
+          Budget_Currency:response.data.project.Budget_Currency,
+          Last_modification:response.data.project.Last_modification,
+          
         })
       },
 
@@ -164,6 +175,7 @@ class Recruiter_Dashboard extends Component {
                 }}>
                   <th>{item.id}</th>
                   <th scope="col">
+
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
@@ -202,10 +214,10 @@ class Recruiter_Dashboard extends Component {
                   open={this.state.projectopen}
                   aria-labelledby="form-dialog-title"
                   maxWidth="md"
-                  fullWidth="fullWidth"
+                 
                 >
-                  <DialogTitle className="">
-                 Project Summary
+                  <DialogTitle className="aign-center">
+                 Project Details
                     <span
                       className="floatright"
                       onClick={() => {
@@ -214,16 +226,53 @@ class Recruiter_Dashboard extends Component {
                         });
                       }}
                     >
-                      <i class="fa fa-times " aria-hidden="true"></i>{" "}
+                    <CloseIcon className="iconclose"/>
                     </span>
                   </DialogTitle>
                   <DialogContent>
                     <Grid>
+
                       <Grid item md={12}>
-                      
-                      <input/>
+                        <h1>Project Title</h1>
+                      <p>{this.state.Project_Title}</p>
+                     
                       </Grid>
+                      <Grid item md={12}>
+                        <h1>Project Description</h1>
+                      <p>{this.state.Project_Description}</p>
+                     
+                      </Grid>
+                     
                     </Grid>
+                    <Grid container>
+                      <Grid item md={1}>
+                        <h5>Buget imit</h5>
+                        </Grid>
+                        <Grid item md={2}>
+                      <span className="mt-4 ml-3">{this.state.Budget_Limit} {this.state.Budget_Currency}</span>
+                     
+                      </Grid >
+                      <Grid item md={6}>
+                       
+                     
+                     {""}
+                      </Grid>
+                      <Grid item md={3} >
+                       <div className="ontime">
+                       <p className="ontime">sat te</p>
+                       <span className="mt-2 ml-3">
+                       {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      }).format(this.state.Last_modification)}
+          </span>
+                       </div>
+                         </Grid>
+                     
+                       </Grid>
                   </DialogContent>
                   <DialogActions>
                     <div className="text-right">
@@ -235,11 +284,9 @@ class Recruiter_Dashboard extends Component {
                         }}
                         color="primary"
                       >
-                        Cancel
+                        Close
                       </Button>
-                      <Button onClick="" color="primary">
-                        Save{" "}
-                      </Button>
+                    
 
                     </div>
                   </DialogActions>
