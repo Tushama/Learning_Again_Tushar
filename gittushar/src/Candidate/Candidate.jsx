@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HOC from "../HOC";
 import "./Candidate.css";
+import Swal from "sweetalert2";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -35,8 +36,13 @@ export class Candidate extends Component {
       console.log("data we are -------", data);
       axios.delete(url).then(
         (response) => {
-          alert(response.data.message);
-          console.log("response for delter", response);
+          if (response.status == 200) {
+            Swal.fire({
+              icon: "success",
+              title: "success",
+              text: response.data.message,
+            });
+          }
         },
         (error) => {
           console.log("ere", error);
@@ -51,8 +57,13 @@ export class Candidate extends Component {
     console.log("playAction url", url);
     axios.get(url).then(
       (response) => {
-        alert(response.data.message);
-        console.log("response play action", response.data);
+        if (response.status == 200) {
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: response.data.message,
+          });
+        }
       },
 
       (error) => {}
