@@ -18,7 +18,6 @@ class Recruiter_Dashboard extends Component {
     this.state = {
       alldata: [],
       value: "",
-      User_id: "",
       id: "",
       projectopen:false,
     };
@@ -33,8 +32,7 @@ class Recruiter_Dashboard extends Component {
         console.log("======alldata", response.data.data);
         this.setState({
           alldata: response.data.data,
-          // User_id: item.User_id,
-          // id: item.id,
+          
         });
       },
 
@@ -110,9 +108,18 @@ class Recruiter_Dashboard extends Component {
     console.log("--------------", this.state.value);
   };
   Projectpro=(id)=>{
-this.setState({
-  projectopen:true,
-})
+    let url = `http://www.localhost:8000/projectdata/${id}`;
+    axios.get(url).then(
+      (response) => {
+        console.log("======alldata", response);
+        this.setState({
+          projectopen:true,
+        })
+      },
+
+      (error) => {}
+    );
+
   }
   render() {
     return (
@@ -134,13 +141,11 @@ this.setState({
                         this.valueselect(e.target.value)
                        }}
                   >
-<option ></option>
-
-
-                     <option value={"all"}>Status for review</option>
+                
+<option value={"all"}>Status</option>
                     <option value={"Live"}>Live</option>
                     <option value={"Draft"}>Draft</option>
-                    <option value={"Draft"}>Decline</option>
+                    <option value={"Decline"}>Decline</option>
                     {/* <option value="Deleted">live</option>
                     <option value="Decline">Delete</option> */}
                   </select>
@@ -152,8 +157,8 @@ this.setState({
             </thead>
 
             <tbody>
-              {this.state.alldata.map((item,id, index) => (
-                <tr  onClick={() => {
+              {this.state.alldata.map((item,index) => (
+                <tr  onClick={(id) => {
                   this.Projectpro(id);
                 }}>
                   <th>{item.id}</th>
