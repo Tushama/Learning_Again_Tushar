@@ -73,9 +73,9 @@ export class Candidate extends Component {
     );
   };
 
-  valueHandler = (status) => {
-    console.log("status-------------------", status);
-    let url = `http://seo.srcservicesltd.com:8000/resumelist/${status}/0`;
+  valueHandler = (all) => {
+    // console.log("status-------------------", status);
+    let url = `http://seo.srcservicesltd.com:8000/resumelist/${all}/0`;
     console.log("urllllllllll", url);
     axios.get(url).then(
       (response) => {
@@ -105,7 +105,8 @@ export class Candidate extends Component {
                     onChange={(e) => {
                       this.valueHandler(e.target.value);
                     }}
-                  >
+                  //  <option  > status</option>
+                  > <option value="all" > All</option>
                     <option value="Draft">Draft</option>
                     <option value="Live">Live</option>
                     <option value="Delete">Delete</option>
