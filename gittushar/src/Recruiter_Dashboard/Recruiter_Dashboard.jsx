@@ -11,7 +11,7 @@ class Recruiter_Dashboard extends Component {
     super(props);
     this.state = {
       alldata: [],
-      value: "",
+      value: "all",
       User_id: "",
       id: "",
     };
@@ -65,13 +65,7 @@ class Recruiter_Dashboard extends Component {
     //   }
     // });
   };
-  actionchange = (e) => {
-    alert("fgdfgd");
-    console.log("======", e.target.value);
-    this.setState({
-      value: e.target.value,
-    });
-  };
+
   actionlive = () => {
     let url = "http://seo.srcservicesltd.com:8000/ProjectLive/303/384";
     axios.get(url).then(
@@ -85,10 +79,26 @@ class Recruiter_Dashboard extends Component {
       (error) => {}
     );
   };
-  selectvalue = (e) => {
+  HandleChange = (event) => {
+
     this.setState({
-      value: e.target.value,
+      value:event.target.value,
     });
+    let url = `http://seo.srcservicesltd.com:8000/projectlist` + "/" + `$(this.state.value)` + "/" + "0";
+    axios.get(url).then(
+      (response) => {
+        console.log("======alldata", response.data.data);
+        this.setState({
+          alldata: response.data.data,
+          // User_id: item.User_id,
+          // id: item.id,
+        });
+      },
+
+      (error) => {}
+    );
+  
+   
     console.log("--------------", this.state.value);
   };
   render() {
@@ -106,10 +116,12 @@ class Recruiter_Dashboard extends Component {
                 <th scope="col">
                   {" "}
                   <select
-                  
+                        value={this.state.value}   
+                        onChange={this.HandleChange}
                   >
-                    <option>Status</option>
-                    <option value="Drafted" onClick={this.componentDidMount} >Drafted</option>
+                     <option value="">Status</option>
+                    
+                    <option value="Live">Live</option>
                     <option value="Deleted">Deleted</option>
                     <option value="Decline">Decline</option>
                   </select>
