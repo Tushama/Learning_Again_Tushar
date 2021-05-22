@@ -158,8 +158,9 @@ class Recruiter_Dashboard extends Component {
 
             <tbody>
               {this.state.alldata.map((item,index) => (
-                <tr  onClick={(id) => {
-                  this.Projectpro(id);
+                <tr  onClick={() => {
+                  console.log(item)
+                  this.Projectpro(item.id);
                 }}>
                   <th>{item.id}</th>
                   <th scope="col">
