@@ -17,7 +17,7 @@ export class Candidate extends Component {
     };
   }
   componentDidMount = () => {
-    let url = "http://seo.srcservicesltd.com:8000/resumelist/Draft/0";
+    let url = "http://seo.srcservicesltd.com:8000/resumelist/all/0";
     axios.get(url).then(
       (response) => {
         console.log("response--------------", response.data);
