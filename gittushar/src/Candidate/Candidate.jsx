@@ -36,13 +36,15 @@ export class Candidate extends Component {
       console.log("data we are -------", data);
       axios.delete(url).then(
         (response) => {
-          if (response.status == 200) {
+          if(response.status ==200){
             Swal.fire({
-              icon: "success",
-              title: "success",
+              icon: 'success',
+              title: 'success',
               text: response.data.message,
+              
             });
           }
+          window.location.reload();
         },
         (error) => {
           console.log("ere", error);
@@ -57,18 +59,22 @@ export class Candidate extends Component {
     console.log("playAction url", url);
     axios.get(url).then(
       (response) => {
-        if (response.status == 200) {
-          Swal.fire({
-            icon: "success",
-            title: "success",
-            text: response.data.message,
-          });
-        }
+         if(response.status ==200){
+            Swal.fire({
+              icon: 'success',
+              title: 'success',
+              text: response.data.message,
+              
+            });
+          }
+          window.location.reload();
+      
       },
 
       (error) => {}
     );
   };
+
 
   render() {
     return (
@@ -89,7 +95,7 @@ export class Candidate extends Component {
                     }}
                   >
                     <option>Status</option>
-                    <option value="Drafted">Drafted</option>
+                    <option value="Drafted">live</option>
                     <option value="Deleted">Deleted</option>
                     <option value="Decline">Decline</option>
                   </select>
