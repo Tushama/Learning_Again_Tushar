@@ -192,19 +192,19 @@ this.setState({
           </table>
         </div>
         <Dialog
-                  className="diailogspace"
+                  className=""
                   open={this.state.projectopen}
                   aria-labelledby="form-dialog-title"
                   maxWidth="md"
                   fullWidth="fullWidth"
                 >
-                  <DialogTitle className="resumedialog_heading">
-                    Profile Summary
+                  <DialogTitle className="">
+                 Project Summary
                     <span
                       className="floatright"
                       onClick={() => {
                         this.setState({
-                          profileSummaryReadData: false,
+                          projectopen: false,
                         });
                       }}
                     >
