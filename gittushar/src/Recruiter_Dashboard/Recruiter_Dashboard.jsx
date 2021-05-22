@@ -224,14 +224,14 @@ this.setState({
                       <Button
                         onClick={() => {
                           this.setState({
-                            profileSummaryReadData: false,
+                            projectopen: false,
                           });
                         }}
                         color="primary"
                       >
                         Cancel
                       </Button>
-                      <Button onClick={this.profileSummary} color="primary">
+                      <Button onClick="" color="primary">
                         Save{" "}
                       </Button>
 
