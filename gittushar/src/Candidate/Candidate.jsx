@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HOC from "../HOC";
 import "./Candidate.css";
+import Swal from "sweetalert2";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -11,15 +12,14 @@ export class Candidate extends Component {
     super(props);
     this.state = {
       tabledata: [],
-      value:""
+      value: "",
     };
   }
   componentDidMount = () => {
     let url = "http://seo.srcservicesltd.com:8000/resumelist/draft/0";
-
     axios.get(url).then(
       (response) => {
-        console.log("thedata", response);
+        console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -28,12 +28,51 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
+  resumeDelete = (data) => {
+    try {
+      let url = `http://seo.srcservicesltd.com:8000/resume/${data.userid}/${data.Id}`;
+
+      console.log("url---------", url);
+      console.log("data we are -------", data);
+      axios.delete(url).then(
+        (response) => {
+          if (response.status == 200) {
+            Swal.fire({
+              icon: "success",
+              title: "success",
+              text: response.data.message,
+            });
+          }
+        },
+        (error) => {
+          console.log("ere", error);
+        }
+      );
+    } catch (error) {
+      console.log("ty err", error);
+    }
+  };
+  playAction = (data) => {
+    let url = `http://seo.srcservicesltd.com:8000/resumelive/${data.userid}/${data.Id}`;
+    console.log("playAction url", url);
+    axios.get(url).then(
+      (response) => {
+        if (response.status == 200) {
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: response.data.message,
+          });
+        }
+      },
+
+      (error) => {}
+    );
+  };
+
   render() {
     return (
       <div>
-        <div className="space">
-          <h1> Candidate</h1>
-        </div>
         <div className="displaying">
           <table class="table displaytable tableoutline">
             <thead class="thead-dark">
@@ -43,9 +82,13 @@ export class Candidate extends Component {
                 <th scope="col">Last modification</th>
                 <th scope="col">
                   {" "}
-                  <select style={{ color: "black" }}>
-                    status
-                    <option value="0">Status</option>
+                  <select
+                    style={{ color: "black" }}
+                    onChange={(e) => {
+                      this.valueHandler(e.target.value);
+                    }}
+                  >
+                    <option>Status</option>
                     <option value="Drafted">Drafted</option>
                     <option value="Deleted">Deleted</option>
                     <option value="Decline">Decline</option>
@@ -84,18 +127,20 @@ export class Candidate extends Component {
                             buttons: [
                               {
                                 label: "Yes",
-
-                                onClick: () => alert("Click Yes"),
+                                onClick: () => this.resumeDelete(item),
                               },
                               {
                                 label: "No",
-                                onClick: () => alert("Click No"),
+                                onClick: () => console.log("Click No"),
                               },
                             ],
                           });
                         }}
                       />
-                      <PlayCircleOutlineIcon className="deletebutton" />
+                      <PlayCircleOutlineIcon
+                        className="deletebutton"
+                        onClick={() => this.playAction(item)}
+                      />
                     </label>
                   </th>
                 </tr>
