@@ -58,13 +58,10 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
-  
+
   render() {
     return (
       <div>
-        <div className="space">
-          <h1> Candidate</h1>
-        </div>
         <div className="displaying">
           <table class="table displaytable tableoutline">
             <thead class="thead-dark">
