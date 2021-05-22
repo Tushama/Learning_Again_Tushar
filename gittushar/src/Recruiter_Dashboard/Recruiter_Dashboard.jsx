@@ -6,14 +6,21 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import Swal from "sweetalert2";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import Grid from "@material-ui/core/Grid";
+import Dialog from "@material-ui/core/Dialog";
+import { DialogActions } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 class Recruiter_Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       alldata: [],
-      value: "all",
+      value: "",
       User_id: "",
       id: "",
+      projectopen:false,
     };
   }
  
@@ -67,7 +74,7 @@ class Recruiter_Dashboard extends Component {
   };
 
   actionlive = () => {
-    let url = "http://seo.srcservicesltd.com:8000/ProjectLive/303/384";
+    let url = "http://localhost:8000/ProjectLive/303/384";
     axios.get(url).then(
       (response) => {
         console.log("======alldata", response.data.data);
@@ -79,12 +86,13 @@ class Recruiter_Dashboard extends Component {
       (error) => {}
     );
   };
-  HandleChange = (event) => {
-
-    this.setState({
-      value:event.target.value,
-    });
-    let url = `http://seo.srcservicesltd.com:8000/projectlist/${this.state.value}/0` ;
+  valueselect = (s) => {
+    console.log("======ggghhghhthtgggh", s);
+    // this.setState({
+    //   value:event.target.value,
+    // });
+    // console.log("======ggghhghhthtgggh", event.target.value);
+    let url = `http://seo.srcservicesltd.com:8000/projectlist/${s}/0` ;
     axios.get(url).then(
       (response) => {
         console.log("======alldata", response.data.data);
@@ -101,6 +109,11 @@ class Recruiter_Dashboard extends Component {
    
     console.log("--------------", this.state.value);
   };
+  Projectpro=(id)=>{
+this.setState({
+  projectopen:true,
+})
+  }
   render() {
     return (
       <div>
@@ -108,7 +121,7 @@ class Recruiter_Dashboard extends Component {
           <h1>Recruiter</h1>
         </div>
         <div className="displaytable1">
-          <table className="table1 table table-striped displaytable tableoutline ">
+          <table className="table1 table table-striped displaytable tableoutline " >
             <thead>
               <tr className="colorback">
                 <th scope="row">id</th>
@@ -116,15 +129,20 @@ class Recruiter_Dashboard extends Component {
                 <th scope="col">
                   {" "}
                   <select
-                           
-                        onChange={this.HandleChange}
+                        
+                       onChange={(e)=>{
+                        this.valueselect(e.target.value)
+                       }}
                   >
-                     <option></option>
-                     <option >Status</option>
-                    
-                    <option value="Live">All</option>
-                    <option value="Deleted">live</option>
-                    <option value="Decline">Delete</option>
+<option ></option>
+
+
+                     <option value={"all"}>Status for review</option>
+                    <option value={"Live"}>Live</option>
+                    <option value={"Draft"}>Draft</option>
+                    <option value={"Draft"}>Decline</option>
+                    {/* <option value="Deleted">live</option>
+                    <option value="Decline">Delete</option> */}
                   </select>
                 </th>
 
@@ -134,8 +152,10 @@ class Recruiter_Dashboard extends Component {
             </thead>
 
             <tbody>
-              {this.state.alldata.map((item, index) => (
-                <tr>
+              {this.state.alldata.map((item,id, index) => (
+                <tr  onClick={() => {
+                  this.Projectpro(id);
+                }}>
                   <th>{item.id}</th>
                   <th scope="col">
                     <p>{item.Project_Title}</p>
@@ -171,6 +191,53 @@ class Recruiter_Dashboard extends Component {
             </tbody>
           </table>
         </div>
+        <Dialog
+                  className=""
+                  open={this.state.projectopen}
+                  aria-labelledby="form-dialog-title"
+                  maxWidth="md"
+                  fullWidth="fullWidth"
+                >
+                  <DialogTitle className="">
+                 Project Summary
+                    <span
+                      className="floatright"
+                      onClick={() => {
+                        this.setState({
+                          projectopen: false,
+                        });
+                      }}
+                    >
+                      <i class="fa fa-times " aria-hidden="true"></i>{" "}
+                    </span>
+                  </DialogTitle>
+                  <DialogContent>
+                    <Grid>
+                      <Grid item md={12}>
+                      
+                      <input/>
+                      </Grid>
+                    </Grid>
+                  </DialogContent>
+                  <DialogActions>
+                    <div className="text-right">
+                      <Button
+                        onClick={() => {
+                          this.setState({
+                            projectopen: false,
+                          });
+                        }}
+                        color="primary"
+                      >
+                        Cancel
+                      </Button>
+                      <Button onClick="" color="primary">
+                        Save{" "}
+                      </Button>
+
+                    </div>
+                  </DialogActions>
+                </Dialog>
       </div>
     );
   }
