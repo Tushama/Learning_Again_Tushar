@@ -7,6 +7,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import { logRoles } from "@testing-library/dom";
 export class Candidate extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ export class Candidate extends Component {
     };
   }
   componentDidMount = () => {
-    let url = "http://seo.srcservicesltd.com:8000/resumelist/draft/0";
+    let url = "http://seo.srcservicesltd.com:8000/resumelist/Draft/0";
     axios.get(url).then(
       (response) => {
         console.log("response--------------", response.data);
@@ -36,12 +37,11 @@ export class Candidate extends Component {
       console.log("data we are -------", data);
       axios.delete(url).then(
         (response) => {
-          if(response.status ==200){
+          if (response.status == 200) {
             Swal.fire({
-              icon: 'success',
-              title: 'success',
+              icon: "success",
+              title: "success",
               text: response.data.message,
-              
             });
           }
           window.location.reload();
@@ -59,23 +59,35 @@ export class Candidate extends Component {
     console.log("playAction url", url);
     axios.get(url).then(
       (response) => {
-         if(response.status ==200){
-            Swal.fire({
-              icon: 'success',
-              title: 'success',
-              text: response.data.message,
-              
-            });
-          }
-          window.location.reload();
-      
+        if (response.status == 200) {
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: response.data.message,
+          });
+        }
+        window.location.reload();
       },
 
       (error) => {}
     );
   };
 
+  valueHandler = (status) => {
+    console.log("status-------------------", status);
+    let url = `http://seo.srcservicesltd.com:8000/resumelist/${status}/0`;
+    console.log("urllllllllll", url);
+    axios.get(url).then(
+      (response) => {
+        console.log("response--------------", response.data);
+        this.setState({
+          tabledata: response.data.data,
+        });
+      },
 
+      (error) => {}
+    );
+  };
   render() {
     return (
       <div>
@@ -94,10 +106,9 @@ export class Candidate extends Component {
                       this.valueHandler(e.target.value);
                     }}
                   >
-                    <option>Status</option>
-                    <option value="Drafted">live</option>
-                    <option value="Deleted">Deleted</option>
-                    <option value="Decline">Decline</option>
+                    <option value="Draft">Draft</option>
+                    <option value="Live">Live</option>
+                    <option value="Delete">Delete</option>
                   </select>
                 </th>
                 <th scope="col">Action</th>
