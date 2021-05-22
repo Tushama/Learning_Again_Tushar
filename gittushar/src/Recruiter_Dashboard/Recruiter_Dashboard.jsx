@@ -84,7 +84,7 @@ class Recruiter_Dashboard extends Component {
     this.setState({
       value:event.target.value,
     });
-    let url = `http://seo.srcservicesltd.com:8000/projectlist` + "/" + `$(this.state.value)` + "/" + "0";
+    let url = `http://seo.srcservicesltd.com:8000/projectlist/${this.state.value}/0` ;
     axios.get(url).then(
       (response) => {
         console.log("======alldata", response.data.data);
@@ -116,14 +116,15 @@ class Recruiter_Dashboard extends Component {
                 <th scope="col">
                   {" "}
                   <select
-                        value={this.state.value}   
+                           
                         onChange={this.HandleChange}
                   >
-                     <option value="">Status</option>
+                     <option></option>
+                     <option >Status</option>
                     
-                    <option value="Live">Live</option>
-                    <option value="Deleted">Deleted</option>
-                    <option value="Decline">Decline</option>
+                    <option value="Live">All</option>
+                    <option value="Deleted">live</option>
+                    <option value="Decline">Delete</option>
                   </select>
                 </th>
 
