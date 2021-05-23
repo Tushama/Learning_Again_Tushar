@@ -7,13 +7,22 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import { logRoles } from "@testing-library/dom";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import Grid from "@material-ui/core/Grid";
+import Dialog from "@material-ui/core/Dialog";
+import { DialogActions } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+
 export class Candidate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tabledata: [],
       value: "",
+      candidateResume: false,
+      Id: "",
+      userid: "",
     };
   }
   componentDidMount = () => {
@@ -88,6 +97,11 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
+  resumeOpen = (Id) => {
+    this.setState({
+      candidateResume: true,
+    });
+  };
   render() {
     return (
       <div>
@@ -105,8 +119,10 @@ export class Candidate extends Component {
                     onChange={(e) => {
                       this.valueHandler(e.target.value);
                     }}
-                  //  <option  > status</option>
-                  > <option value="all" > All</option>
+                    //  <option  > status</option>
+                  >
+                    {" "}
+                    <option value="all"> All</option>
                     <option value="Draft">Draft</option>
                     <option value="Live">Live</option>
                     <option value="Delete">Delete</option>
@@ -115,9 +131,14 @@ export class Candidate extends Component {
                 <th scope="col">Action</th>
               </tr>
             </thead>
+
             <tbody>
-              {this.state.tabledata.map((item, index) => (
-                <tr>
+              {this.state.tabledata.map((item, Id, index) => (
+                <tr
+                  onClick={() => {
+                    this.resumeOpen(Id);
+                  }}
+                >
                   <th>{item.Id}</th>
                   <th scope="col">
                     <p>{item.Full_Name}</p>
@@ -166,6 +187,53 @@ export class Candidate extends Component {
             </tbody>
           </table>
         </div>
+        <Dialog
+          className=""
+          open={this.state.candidateResume}
+          aria-labelledby="form-dialog-title"
+          maxWidth="md"
+          fullWidth="fullWidth"
+        >
+          <DialogTitle className=" d-flex justify-content-center ">
+            Resume
+            <span
+              className="floatright"
+              onClick={() => {
+                this.setState({
+                  candidateResume: false,
+                });
+              }}
+            >
+              <i class="fa fa-times " aria-hidden="true"></i>{" "}
+            </span>
+          </DialogTitle>
+          <DialogContent>
+            <Grid>
+              <Grid item md={12}></Grid>
+            </Grid>
+          </DialogContent>
+          <DialogActions>
+            <div className="d-flex justify-content-around">
+              <div>
+                <Button
+                  onClick={() => {
+                    this.setState({
+                      candidateResume: false,
+                    });
+                  }}
+                  color="primary"
+                >
+                  Cancel
+                </Button>
+              </div>
+              <div>
+                <Button onClick="" color="primary">
+                  Save{" "}
+                </Button>
+              </div>
+            </div>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
