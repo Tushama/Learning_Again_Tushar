@@ -23,3 +23,13 @@
       font-size: 17px !important;
       color: black;
   }
+  .iconclose{
+      font-size: 25px !important;
+      color: black;
+      float: right;
+      cursor: pointer;
+  }
+  .ontime{
+    float: right !important;
+    text-align: right;
+  }

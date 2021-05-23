@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Recruiter_Dashboard.css";
 import axios from "axios";
+import CloseIcon from "@material-ui/icons/Close";
 import HOC from "../HOC";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
@@ -18,14 +19,16 @@ class Recruiter_Dashboard extends Component {
     this.state = {
       alldata: [],
       value: "",
-      User_id: "",
       id: "",
-      projectopen:false,
+      projectopen: false,
+      Project_Title: "",
+      Project_Description: "",
+      Budget_Limit: "",
+      Budget_Currency: "",
     };
   }
- 
+
   componentDidMount = (item) => {
- 
     let url = "http://seo.srcservicesltd.com:8000/projectlist/all/0";
 
     axios.get(url).then(
@@ -33,8 +36,6 @@ class Recruiter_Dashboard extends Component {
         console.log("======alldata", response.data.data);
         this.setState({
           alldata: response.data.data,
-          // User_id: item.User_id,
-          // id: item.id,
         });
       },
 
@@ -92,7 +93,7 @@ class Recruiter_Dashboard extends Component {
     //   value:event.target.value,
     // });
     // console.log("======ggghhghhthtgggh", event.target.value);
-    let url = `http://seo.srcservicesltd.com:8000/projectlist/${s}/0` ;
+    let url = `http://seo.srcservicesltd.com:8000/projectlist/${s}/0`;
     axios.get(url).then(
       (response) => {
         console.log("======alldata", response.data.data);
@@ -105,15 +106,27 @@ class Recruiter_Dashboard extends Component {
 
       (error) => {}
     );
-  
-   
+
     console.log("--------------", this.state.value);
   };
-  Projectpro=(id)=>{
-this.setState({
-  projectopen:true,
-})
-  }
+  Projectpro = (id) => {
+    let url = `http://www.localhost:8000/projectdata/${id}`;
+    axios.get(url).then(
+      (response) => {
+        console.log("======alldata", response);
+        this.setState({
+          projectopen: true,
+          Project_Title: response.data.project.Project_Title,
+          Project_Description: response.data.project.Project_Description,
+          Budget_Limit: response.data.project.Budget_Limit,
+          Budget_Currency: response.data.project.Budget_Currency,
+          Last_modification: response.data.project.Last_modification,
+        });
+      },
+
+      (error) => {}
+    );
+  };
   render() {
     return (
       <div>
@@ -121,7 +134,7 @@ this.setState({
           <h1>Recruiter</h1>
         </div>
         <div className="displaytable1">
-          <table className="table1 table table-striped displaytable tableoutline " >
+          <table className="table1 table table-striped displaytable tableoutline ">
             <thead>
               <tr className="colorback">
                 <th scope="row">id</th>
@@ -129,18 +142,14 @@ this.setState({
                 <th scope="col">
                   {" "}
                   <select
-                        
-                       onChange={(e)=>{
-                        this.valueselect(e.target.value)
-                       }}
+                    onChange={(e) => {
+                      this.valueselect(e.target.value);
+                    }}
                   >
-<option ></option>
-
-
-                     <option value={"all"}>Status for review</option>
+                    <option value={"all"}>Status</option>
                     <option value={"Live"}>Live</option>
                     <option value={"Draft"}>Draft</option>
-                    <option value={"Draft"}>Decline</option>
+                    <option value={"Decline"}>Decline</option>
                     {/* <option value="Deleted">live</option>
                     <option value="Decline">Delete</option> */}
                   </select>
@@ -152,12 +161,15 @@ this.setState({
             </thead>
 
             <tbody>
-              {this.state.alldata.map((item,id, index) => (
-                <tr  onClick={() => {
-                  this.Projectpro(id);
-                }}>
+              {this.state.alldata.map((item, index) => (
+                <tr
+                 
+                >
                   <th>{item.id}</th>
-                  <th scope="col">
+                  <th scope="col"  onClick={() => {
+                    console.log(item);
+                    this.Projectpro(item.id);
+                  }}>
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
@@ -192,52 +204,78 @@ this.setState({
           </table>
         </div>
         <Dialog
-                  className=""
-                  open={this.state.projectopen}
-                  aria-labelledby="form-dialog-title"
-                  maxWidth="md"
-                  fullWidth="fullWidth"
-                >
-                  <DialogTitle className="">
-                 Project Summary
-                    <span
-                      className="floatright"
-                      onClick={() => {
-                        this.setState({
-                          projectopen: false,
-                        });
-                      }}
-                    >
-                      <i class="fa fa-times " aria-hidden="true"></i>{" "}
-                    </span>
-                  </DialogTitle>
-                  <DialogContent>
-                    <Grid>
-                      <Grid item md={12}>
-                      
-                      <input/>
-                      </Grid>
-                    </Grid>
-                  </DialogContent>
-                  <DialogActions>
-                    <div className="text-right">
-                      <Button
-                        onClick={() => {
-                          this.setState({
-                            projectopen: false,
-                          });
-                        }}
-                        color="primary"
-                      >
-                        Cancel
-                      </Button>
-                      <Button onClick="" color="primary">
-                        Save{" "}
-                      </Button>
-
-                    </div>
-                  </DialogActions>
-                </Dialog>
+          className=""
+          open={this.state.projectopen}
+          aria-labelledby="form-dialog-title"
+          maxWidth="md"
+        >
+          <DialogTitle className="aign-center">
+            Project Details
+            <span
+              className="floatright"
+              onClick={() => {
+                this.setState({
+                  projectopen: false,
+                });
+              }}
+            >
+              <CloseIcon className="iconclose" />
+            </span>
+          </DialogTitle>
+          <DialogContent>
+            <Grid>
+              <Grid item md={12}>
+                <h1>Project Title</h1>
+                <p>{this.state.Project_Title}</p>
+              </Grid>
+              <Grid item md={12}>
+                <h1>Project Description</h1>
+                <p>{this.state.Project_Description}</p>
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item md={1}>
+                <h5>Buget imit</h5>
+              </Grid>
+              <Grid item md={2}>
+                <span className="mt-4 ml-3">
+                  {this.state.Budget_Limit} {this.state.Budget_Currency}
+                </span>
+              </Grid>
+              <Grid item md={6}>
+                {""}
+              </Grid>
+              <Grid item md={3}>
+                <div className="ontime">
+                  <p className="ontime">sat te</p>
+                  <span className="mt-2 ml-3">
+                    {new Intl.DateTimeFormat("en-US", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    }).format(this.state.Last_modification)}
+                  </span>
+                </div>
+              </Grid>
+            </Grid>
+          </DialogContent>
+          <DialogActions>
+            <div className="text-right">
+              <Button
+                onClick={() => {
+                  this.setState({
+                    projectopen: false,
+                  });
+                }}
+                color="primary"
+              >
+                Close
+              </Button>
+            </div>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
