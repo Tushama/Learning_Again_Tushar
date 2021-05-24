@@ -21,14 +21,17 @@ export class Candidate extends Component {
       tabledata: [],
       value: "",
       candidateResume: false,
-      resumeDetails: {},
+      resumeDetails: {
+        Profile: {
+          First_Name: "",
+        },
+      },
     };
   }
   componentDidMount = () => {
     let url = "http://seo.srcservicesltd.com:8000/resumelist/all/0";
     axios.get(url).then(
       (response) => {
-        // console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -40,9 +43,6 @@ export class Candidate extends Component {
   resumeDelete = (data) => {
     try {
       let url = `http://seo.srcservicesltd.com:8000/resume/${data.userid}/${data.Id}`;
-
-      // console.log("url---------", url);
-      // console.log("data we are -------", data);
       axios.delete(url).then(
         (response) => {
           if (response.status == 200) {
@@ -64,7 +64,6 @@ export class Candidate extends Component {
   };
   playAction = (data) => {
     let url = `http://seo.srcservicesltd.com:8000/resumelive/${data.userid}/${data.Id}`;
-    // console.log("playAction url", url);
     axios.get(url).then(
       (response) => {
         if (response.status == 200) {
@@ -82,12 +81,9 @@ export class Candidate extends Component {
   };
 
   valueHandler = (all) => {
-    // console.log("status-------------------", status);
     let url = `http://seo.srcservicesltd.com:8000/resumelist/${all}/0`;
-    console.log("urllllllllll", url);
     axios.get(url).then(
       (response) => {
-        // console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -112,6 +108,7 @@ export class Candidate extends Component {
     );
   };
   render() {
+    const { resumeDetails } = this.state;
     console.log(
       "details0000000000000000000000000000000000000",
       this.state.resumeDetails
@@ -132,7 +129,6 @@ export class Candidate extends Component {
                     onChange={(e) => {
                       this.valueHandler(e.target.value);
                     }}
-                    
                   >
                     {" "}
                     <option value="all"> All</option>
@@ -224,7 +220,7 @@ export class Candidate extends Component {
             <Grid>
               <Grid item md={12}>
                 <h1> Title</h1>
-                <p>{this.state.Full_Name}</p>
+                <p>{resumeDetails.Profile.First_Name}</p>
               </Grid>
             </Grid>
           </DialogContent>
