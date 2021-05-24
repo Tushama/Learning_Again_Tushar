@@ -7,6 +7,8 @@ import axios from "axios";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Circular } from 'react-graphical-ui';
 import { Histogram } from 'react-graphical-ui';
+import {Bar} from 'react-chartjs-2'
+
 class Dashboard extends Component {
     constructor(props) {
         super(props)
@@ -22,6 +24,20 @@ class Dashboard extends Component {
       
           }
      
+    }
+
+    state = {
+      labels: ['January', 'February', 'March',
+               'April', 'May'],
+      datasets: [
+        {
+          label: 'Rainfall',
+          backgroundColor: 'rgba(75,192,192,1)',
+          borderColor: 'rgba(0,0,0,1)',
+          borderWidth: 2,
+          data: [65, 59, 80, 81, 56]
+        }
+      ]
     }
 
     Reload =()=>{
@@ -72,20 +88,33 @@ class Dashboard extends Component {
                 <Grid item md={1}>
 
                     </Grid>
-                    <Grid item md={3}>
+                    <Grid item md={2}>
 <Card className="card1">
 <b>Total Registered Users</b>
-
-<Circular value={this.state.Total_User}  max={100} display="inline" withGrid={false} />
+{/* <Bar
+          data={this.state.Total_User}
+          options={{
+            title:{
+              display:true,
+              text:'Average Rainfall per month',
+              fontSize:20
+            },
+            legend:{
+              display:true,
+              position:'right'
+            }
+          }}
+        /> */}
 </Card>
                     </Grid>
-                    <Grid item md={5}>
+
+                    <Grid item md={2}>
 <Card className="middlecard">
 <b>Total Verified</b>
 <Circular value={this.state.Veryfied_user}  max={100} display="inline" withGrid={false} />
 </Card>
                     </Grid>
-                    <Grid item md={3}>
+                    <Grid item md={2}>
 <Card className="card3 ">
 <b>Total Unverified Users</b>
 
@@ -98,10 +127,10 @@ class Dashboard extends Component {
                 <div>
 
                 <Grid container>
-                <Grid item md={1}>
+                <Grid item md={2}>
 
                     </Grid>
-                    <Grid item md={8}>
+                    <Grid item md={2}>
 <Card className="cardr1">
 {/* <img className="imagedemo" src ="https://image.freepik.com/free-vector/business-abstract-infographics-with-3d-pie-info-char-graph-bar_53562-5873.jpg"/> */}
 <Histogram values={[47,100,32,45,67,89,32]} max={100} notAllreadyFull={true} withGrid={true} gridDivisionCount={10} display="" size={12} />
@@ -109,7 +138,7 @@ class Dashboard extends Component {
 </Card>
                     </Grid>
                  
-                    <Grid item md={3}>
+                    <Grid item md={2}>
 <Card className="card3">
 <b>Total Resume</b>
 
