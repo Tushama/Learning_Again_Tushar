@@ -132,7 +132,7 @@ export class Candidate extends Component {
                     onChange={(e) => {
                       this.valueHandler(e.target.value);
                     }}
-                    //  <option  > status</option>
+                    
                   >
                     {" "}
                     <option value="all"> All</option>
