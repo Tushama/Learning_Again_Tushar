@@ -21,15 +21,14 @@ export class Candidate extends Component {
       tabledata: [],
       value: "",
       candidateResume: false,
-      Id: "",
-      userid: "",
+      resumeDetails: {},
     };
   }
   componentDidMount = () => {
     let url = "http://seo.srcservicesltd.com:8000/resumelist/all/0";
     axios.get(url).then(
       (response) => {
-        console.log("response--------------", response.data);
+        // console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -42,8 +41,8 @@ export class Candidate extends Component {
     try {
       let url = `http://seo.srcservicesltd.com:8000/resume/${data.userid}/${data.Id}`;
 
-      console.log("url---------", url);
-      console.log("data we are -------", data);
+      // console.log("url---------", url);
+      // console.log("data we are -------", data);
       axios.delete(url).then(
         (response) => {
           if (response.status == 200) {
@@ -65,7 +64,7 @@ export class Candidate extends Component {
   };
   playAction = (data) => {
     let url = `http://seo.srcservicesltd.com:8000/resumelive/${data.userid}/${data.Id}`;
-    console.log("playAction url", url);
+    // console.log("playAction url", url);
     axios.get(url).then(
       (response) => {
         if (response.status == 200) {
@@ -88,7 +87,7 @@ export class Candidate extends Component {
     console.log("urllllllllll", url);
     axios.get(url).then(
       (response) => {
-        console.log("response--------------", response.data);
+        // console.log("response--------------", response.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -97,12 +96,26 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
-  resumeOpen = (Id) => {
-    this.setState({
-      candidateResume: true,
-    });
+  resumeOpen = (data) => {
+    console.log("data------------------", data);
+    let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${data.userid}/${data.Id}`;
+    console.log("hhhhhhhhhhhhhhhh url", url);
+    axios.get(url).then(
+      (response) => {
+        this.setState({
+          resumeDetails: response.data.data,
+          candidateResume: true,
+        });
+      },
+
+      (error) => {}
+    );
   };
   render() {
+    console.log(
+      "details0000000000000000000000000000000000000",
+      this.state.resumeDetails
+    );
     return (
       <div>
         <div className="displaying">
@@ -136,7 +149,7 @@ export class Candidate extends Component {
               {this.state.tabledata.map((item, Id, index) => (
                 <tr
                   onClick={() => {
-                    this.resumeOpen(Id);
+                    this.resumeOpen(item);
                   }}
                 >
                   <th>{item.Id}</th>
@@ -209,11 +222,14 @@ export class Candidate extends Component {
           </DialogTitle>
           <DialogContent>
             <Grid>
-              <Grid item md={12}></Grid>
+              <Grid item md={12}>
+                <h1> Title</h1>
+                <p>{this.state.Full_Name}</p>
+              </Grid>
             </Grid>
           </DialogContent>
           <DialogActions>
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-end">
               <div>
                 <Button
                   onClick={() => {
@@ -223,14 +239,10 @@ export class Candidate extends Component {
                   }}
                   color="primary"
                 >
-                  Cancel
+                  Close
                 </Button>
               </div>
-              <div>
-                <Button onClick="" color="primary">
-                  Save{" "}
-                </Button>
-              </div>
+              <div></div>
             </div>
           </DialogActions>
         </Dialog>
