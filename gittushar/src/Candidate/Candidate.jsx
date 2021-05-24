@@ -134,7 +134,7 @@ export class Candidate extends Component {
                     <option value="all"> All</option>
                     <option value="Draft">Draft</option>
                     <option value="Live">Live</option>
-                    <option value="Delete">Delete</option>
+                    <option value="Delete Requested">Deleted</option>
                   </select>
                 </th>
                 <th scope="col">Action</th>
@@ -196,7 +196,7 @@ export class Candidate extends Component {
             </tbody>
           </table>
         </div>
-        <Dialog
+        {/* <Dialog
           className=""
           open={this.state.candidateResume}
           aria-labelledby="form-dialog-title"
@@ -241,7 +241,7 @@ export class Candidate extends Component {
               <div></div>
             </div>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
       </div>
     );
   }
