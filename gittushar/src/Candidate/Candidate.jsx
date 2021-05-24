@@ -7,12 +7,6 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import axios from "axios";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import Grid from "@material-ui/core/Grid";
-import Dialog from "@material-ui/core/Dialog";
-import { DialogActions } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 
 export class Candidate extends Component {
   constructor(props) {
@@ -32,6 +26,7 @@ export class Candidate extends Component {
     let url = "http://seo.srcservicesltd.com:8000/resumelist/all/0";
     axios.get(url).then(
       (response) => {
+        console.log("detariskssssssssss", response.data.data);
         this.setState({
           tabledata: response.data.data,
         });
@@ -93,6 +88,7 @@ export class Candidate extends Component {
     );
   };
   resumeOpen = (data) => {
+    window.open("Public-Viewer")
     console.log("data------------------", data);
     let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${data.userid}/${data.Id}`;
     console.log("hhhhhhhhhhhhhhhh url", url);
@@ -121,6 +117,8 @@ export class Candidate extends Component {
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Candidate Name</th>
+                <th scope="col">Resume Name</th>
+
                 <th scope="col">Last modification</th>
                 <th scope="col">
                   {" "}
@@ -151,6 +149,14 @@ export class Candidate extends Component {
                   <th>{item.Id}</th>
                   <th scope="col">
                     <p>{item.Full_Name}</p>
+                  </th>
+                  <th
+                    scope="col"
+                    onClick={() => {
+                      this.resumeOpen(item);
+                    }}
+                  >
+                    <p>Resume name</p>
                   </th>
                   <th scope="col">
                     {new Intl.DateTimeFormat("en-US", {

@@ -4,6 +4,7 @@ import Login from "../src/Tushar_login/Login";
 import Dashboard from "../src/Dashboard/Dashboard";
 import Candidate from "../src/Candidate/Candidate";
 import Recruiter_Dashboard from "./Recruiter_Dashboard/Recruiter_Dashboard";
+import Publicview from "./Publicview/Publicview";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             path="/recruiter-dashboard"
             component={Recruiter_Dashboard}
           ></Route>
+          <Route path="/Public-Viewer" component={Publicview}></Route>
         </Switch>
       </BrowserRouter>
     </div>
