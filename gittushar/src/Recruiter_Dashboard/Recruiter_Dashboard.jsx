@@ -117,7 +117,6 @@ class Recruiter_Dashboard extends Component {
       (response) => {
         console.log("======alldata", response);
         this.setState({
-          projectopen: true,
           Project_Title: response.data.project.Project_Title,
           Project_Description: response.data.project.Project_Description,
           Budget_Limit: response.data.project.Budget_Limit,
@@ -149,8 +148,6 @@ class Recruiter_Dashboard extends Component {
                     <option value="Live">Live</option>
                     <option value="pending for Review">pending</option>
                     <option value="Decline">Decline</option>
-                    {/* <option value="Deleted">live</option>
-                    <option value="Decline">Delete</option> */}
                   </select>
                 </th>
 
@@ -163,13 +160,7 @@ class Recruiter_Dashboard extends Component {
               {this.state.alldata.map((item, index) => (
                 <tr>
                   <th>{item.id}</th>
-                  <th
-                    scope="col"
-                    onClick={() => {
-                      console.log(item);
-                      this.Projectpro(item.id);
-                    }}
-                  >
+                  <th scope="col">
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
@@ -188,14 +179,14 @@ class Recruiter_Dashboard extends Component {
                   </th>
                   <th scope="col">
                     <label>
-                      <Button
-                        className="deleteicon"
-                        onClick={this.decline}
-                      > Decline</Button>
+                      <Button className="deleteicon" onClick={this.decline}>
+                        {" "}
+                        Decline
+                      </Button>
 
                       <Button
                         className="deleteicon mt-1 "
-                        onClick={this.actionlive(item)}
+                        onClick={() => this.actionlive(item)}
                       >
                         Live
                       </Button>
@@ -206,79 +197,6 @@ class Recruiter_Dashboard extends Component {
             </tbody>
           </table>
         </div>
-        {/* <Dialog
-          className=""
-          open={this.state.projectopen}
-          aria-labelledby="form-dialog-title"
-          maxWidth="md"
-        >
-          <DialogTitle className="aign-center">
-            Project Details
-            <span
-              className="floatright"
-              onClick={() => {
-                this.setState({
-                  projectopen: false,
-                });
-              }}
-            >
-              <CloseIcon className="iconclose" />
-            </span>
-          </DialogTitle>
-          <DialogContent>
-            <Grid>
-              <Grid item md={12}>
-                <h1>Project Title</h1>
-                <p>{this.state.Project_Title}</p>
-              </Grid>
-              <Grid item md={12}>
-                <h1>Project Description</h1>
-                <p>{this.state.Project_Description}</p>
-              </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item md={1}>
-                <h5>Buget imit</h5>
-              </Grid>
-              <Grid item md={2}>
-                <span className="mt-4 ml-3">
-                  {this.state.Budget_Limit} {this.state.Budget_Currency}
-                </span>
-              </Grid>
-              <Grid item md={6}>
-                {""}
-              </Grid>
-              <Grid item md={3}>
-                <div className="ontime">
-                  <p className="ontime">sat te</p>
-                  <span className="mt-2 ml-3">
-                    {new Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    }).format(this.state.Last_modification)}
-                  </span>
-                </div>
-              </Grid>
-            </Grid>
-          </DialogContent>
-          <DialogActions>
-            <div className="text-right">
-              <Button
-                onClick={() => {
-                  this.setState({
-                    projectopen: false,
-                  });
-                }}
-                color="primary"
-              >
-                Close
-              </Button>
-            </div>
-          </DialogActions>
-        </Dialog> */}
       </div>
     );
   }
