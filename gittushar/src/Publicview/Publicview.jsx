@@ -81,10 +81,10 @@ console.log("publiv view props=============",props)
   updatealldataresume = () => {
     let url =
       getBaseUrl() +
-      "get/resumePublicView/" +
-      this.props.match.params.userId +
+      "resumePublicView/" +
+      this.props.match.params.userid +
       "/" +
-      this.props.match.params.resumeId;
+      this.props.match.params.Id;
 
     axios.get(url).then(
       (response) => {
@@ -613,7 +613,7 @@ console.log("publiv view props=============",props)
               )}
 
               <div className="public_contact">
-                <div className="Views">
+                {/* <div className="Views">
                   <Button
                     className="btned get_help_btn1 ml-4"
                     onClick={() => {
@@ -634,7 +634,7 @@ console.log("publiv view props=============",props)
                   >
                     CHAT
                   </Button>
-                </div>
+                </div> */}
               </div>
 
               <div className="ml-4 mr-5 mt-4 resetPubblic ">
@@ -798,7 +798,7 @@ console.log("publiv view props=============",props)
                           id="panel1bh-header"
                         >
                           <div className="row" style={{ width: "100%" }}>
-                            <div className="col-6">
+                            <div className="ml-4">
                               <Typography
                                 variant="body2"
                                 className="skill-set"
@@ -879,7 +879,7 @@ console.log("publiv view props=============",props)
                           id="panel1bh-header"
                         >
                           <div className="row" style={{ width: "100%" }}>
-                            <div className="col-6">
+                            <div className="ml-4">
                               <Typography
                                 variant="body2"
                                 id="education_list"
@@ -956,7 +956,7 @@ console.log("publiv view props=============",props)
                           id="panel1bh-header"
                         >
                           <div className="row" style={{ width: "100%" }}>
-                            <div className="col-6">
+                            <div className="ml-4">
                               <Typography
                                 variant="body2"
                                 className="skill-set"
@@ -985,7 +985,7 @@ console.log("publiv view props=============",props)
                                   </thead>
                                   {this.state.Itskill.map((item, index) => (
                                     <tbody>
-                                      <tr>
+                                      <tr >
                                         <td>{item.ItSkils}</td>
                                         <td>{item.Version}</td>
                                         <td>{item.Last_used}</td>
@@ -1017,7 +1017,7 @@ console.log("publiv view props=============",props)
                           id="panel1bh-header"
                         >
                           <div className="row" style={{ width: "100%" }}>
-                            <div className="col-6">
+                            <div className="ml-4">
                               <Typography
                                 variant="body2"
                                 className="skill-set"
@@ -1103,7 +1103,7 @@ console.log("publiv view props=============",props)
                           id="panel1bh-header"
                         >
                           <div className="row" style={{ width: "100%" }}>
-                            <div className="col-6">
+                            <div className="ml-4">
                               <Typography
                                 variant="body2"
                                 className="skill-set"
