@@ -188,14 +188,17 @@ class Recruiter_Dashboard extends Component {
                   </th>
                   <th scope="col">
                     <label>
-                      <ReportProblemIcon
+                      <Button
                         className="deleteicon"
                         onClick={this.decline}
-                      />
-                      <PlayCircleOutlineIcon
-                        className="deleteicon ml-3"
+                      > Decline</Button>
+
+                      <Button
+                        className="deleteicon mt-1 "
                         onClick={this.actionlive(item)}
-                      />
+                      >
+                        Live
+                      </Button>
                     </label>
                   </th>
                 </tr>
