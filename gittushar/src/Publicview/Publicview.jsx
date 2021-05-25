@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import Grid from "@material-ui/core/Grid";
@@ -18,16 +18,46 @@ import "./Publicview.css";
 import HOC from "../../src/HOC";
 
 class Publicview extends Component {
-    render() {
-        return (
-            <div>
-                  <div className="user_main_div_style">
-        <div className="scroll"></div>
-        <Grid className="maingridLogin2">
-          <Grid item md={3} className="user_main_page first_public">
-            <Card className="crd1 cardLinkingg ">
-              <div className="quickLinkImg">
-                {/* {imgage === null ? (
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fullName: "",
+    };
+  }
+
+  componentDidMount() {
+    try {
+      let userid = localStorage.getItem("selectedUserId");
+      let Id = localStorage.getItem("selectedResumeId");
+      let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${userid}/${Id}`;
+      console.log("hhhhhhhhhhhhhhhh url", url);
+      axios.get(url).then(
+        (response) => {
+          let data = response.data.data;
+          let fullName = data.Profile.First_Name + " " + data.Profile.Last_Name;
+          this.setState({ fullName });
+          console.log("response data", response.data.data);
+        },
+        (error) => {
+          console.log("error----", error);
+        }
+      );
+    } catch (error) {
+      console.log("bhawana  error", error);
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="user_main_div_style">
+          <div className="scroll"></div>
+          <Grid className="maingridLogin2">
+            <Grid item md={3} className="user_main_page first_public">
+              <Card className="crd1 cardLinkingg ">
+                <div className="quickLinkImg">
+                  {/* {imgage === null ? (
                   <div className="profilepicture text-center">
                     <img src={imageUrl} id="img" className="img mx-auto" />
                   </div>
@@ -36,7 +66,7 @@ class Publicview extends Component {
                     <img src={showimage} id="img" className="img mx-auto" />
                   </div>
                 )} */}
-{/* 
+                  {/* 
                 <input
                   type="file"
                   accept="image/*"
@@ -44,146 +74,145 @@ class Publicview extends Component {
                   id="input"
                   onChange={this.imageHandler}
                 /> */}
-              </div>
+                </div>
 
-              {/* {profiledata.First_Name == undefined ? (
+                {/* {profiledata.First_Name == undefined ? (
                 "N/A"
               ) : (
                 <p className="user_fonted1">
                   {profiledata.First_Name} {profiledata.Middle_Name}{" "}
                   {profiledata.Last_Name}
                 </p> */}
-              {/* )} */}
+                {/* )} */}
 
-              <div className="public_contact">
-                <div className="Views">
-                  <Button
-                    className="btned get_help_btn1 ml-4"
+                <div className="public_contact">
+                  <div className="Views">
+                    <Button
+                      className="btned get_help_btn1 ml-4"
+                      onClick={() => {
+                        {
+                          this.contact_details_resume_view();
+                        }
+                      }}
+                    >
+                      CONTACT DETAILS
+                    </Button>
+                    <Button
+                      className="btned get_help_btn1 mr-3"
+                      onClick={() => {
+                        {
+                          this.chat_post_data();
+                        }
+                      }}
+                    >
+                      CHAT
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="ml-4 mr-5 mt-4 resetPubblic ">
+                  <p className="qlink"> Quick Links</p>
+                  <hr style={{ width: "100%" }} />
+
+                  <div
+                    className="linked "
                     onClick={() => {
-                      {
-                        this.contact_details_resume_view();
-                      }
+                      this.scrollToID("personaled");
                     }}
                   >
-                    CONTACT DETAILS
-                  </Button>
-                  <Button
-                    className="btned get_help_btn1 mr-3"
+                    Personal Details
+                    <a className="Secondary_content disabledLink"> </a>
+                  </div>
+
+                  <div
+                    className="linked "
                     onClick={() => {
-                      {
-                        this.chat_post_data();
-                      }
+                      console.log("coming here");
+                      this.scrollToID("resume_headlined");
                     }}
                   >
-                    CHAT
-                  </Button>
+                    Resume Headline
+                    <a className="Secondary_content disabledLink"> </a>
+                  </div>
+
+                  <Link
+                    activeClass="active"
+                    to="employment"
+                    spy={true}
+                    smooth={true}
+                    className="linked "
+                    onClick={() => {
+                      console.log("coming here");
+                      this.scrollToID("employment_reset");
+                    }}
+                  >
+                    Employment Details
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="eduction"
+                    spy={true}
+                    smooth={true}
+                    className="linked "
+                    onClick={() => {
+                      this.scrollToID("education_list");
+                    }}
+                  >
+                    Education Details
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="skills"
+                    spy={true}
+                    smooth={true}
+                    className="linked "
+                    onClick={() => {
+                      this.scrollToID("It_skills");
+                    }}
+                  >
+                    IT Skills
+                  </Link>
+                  <Link
+                    activeClass="active"
+                    to="project"
+                    spy={true}
+                    smooth={true}
+                    className="linked "
+                    onClick={() => {
+                      console.log("coming here");
+                      this.scrollToID("project_details");
+                    }}
+                  >
+                    Project Details
+                  </Link>
+
+                  <div
+                    className="linked "
+                    onClick={() => {
+                      this.scrollToID("profile_summary");
+                    }}
+                  >
+                    Profile Summary
+                    <a className="Secondary_content disabledLink"> </a>
+                  </div>
+
+                  <Link
+                    activeClass="active"
+                    to="online"
+                    spy={true}
+                    smooth={true}
+                    className="linked "
+                    onClick={() => {
+                      this.scrollToID("online_profiles");
+                    }}
+                  >
+                    Online Profiles
+                  </Link>
                 </div>
-              </div>
-
-              <div className="ml-4 mr-5 mt-4 resetPubblic ">
-                <p className="qlink"> Quick Links</p>
-                <hr style={{ width: "100%" }} />
-
-                <div
-                  className="linked "
-                  onClick={() => {
-                    this.scrollToID("personaled");
-                  }}
-                >
-                  Personal Details
-                  <a className="Secondary_content disabledLink"> </a>
-                </div>
-
-                <div
-                  className="linked "
-                  onClick={() => {
-                    console.log("coming here");
-                    this.scrollToID("resume_headlined");
-                  }}
-                >
-                  Resume Headline
-                  <a className="Secondary_content disabledLink"> </a>
-                </div>
-
-                <Link
-                  activeClass="active"
-                  to="employment"
-                  spy={true}
-                  smooth={true}
-                  className="linked "
-                  onClick={() => {
-                    console.log("coming here");
-                    this.scrollToID("employment_reset");
-                  }}
-                >
-                  Employment Details
-                </Link>
-                <Link
-                  activeClass="active"
-                  to="eduction"
-                  spy={true}
-                  smooth={true}
-                  className="linked "
-                  onClick={() => {
-                    this.scrollToID("education_list");
-                  }}
-                >
-                  Education Details
-                </Link>
-                <Link
-                  activeClass="active"
-                  to="skills"
-                  spy={true}
-                  smooth={true}
-                  className="linked "
-                  onClick={() => {
-                    this.scrollToID("It_skills");
-                  }}
-                >
-                  IT Skills
-                </Link>
-                <Link
-                  activeClass="active"
-                  to="project"
-                  spy={true}
-                  smooth={true}
-                  className="linked "
-                  onClick={() => {
-                    console.log("coming here");
-                    this.scrollToID("project_details");
-                  }}
-                >
-                  Project Details
-                </Link>
-
-                <div
-                  className="linked "
-                  onClick={() => {
-                    this.scrollToID("profile_summary");
-                  }}
-                >
-                  Profile Summary
-                  <a className="Secondary_content disabledLink"> </a>
-                </div>
-
-                <Link
-                  activeClass="active"
-                  to="online"
-                  spy={true}
-                  smooth={true}
-                  className="linked "
-                  onClick={() => {
-                    this.scrollToID("online_profiles");
-                  }}
-                >
-                  Online Profiles
-                </Link>
-              </div>
-            </Card>
-          </Grid>
-          <Grid item md={9} xs={11}>
-            <div className="user_main_page  public_viewed">
-            
+              </Card>
+            </Grid>
+            <Grid item md={9} xs={11}>
+              <div className="user_main_page  public_viewed">
                 <div className="container mb-4 userview_maindata">
                   <div className="accordf_first">
                     <Accordion
@@ -204,10 +233,7 @@ class Publicview extends Component {
                         </Typography>
                       </AccordionSummary>
                       <div>
-                        <h6 className="ml-3 resumeheadlinesize">
-                          {" "}
-                         
-                        </h6>
+                        <h6 className="ml-3 resumeheadlinesize"> </h6>
                         <div className="d-flex">
                           <Typography
                             variant="body2"
@@ -215,64 +241,54 @@ class Publicview extends Component {
                           >
                             <p>Skill Set</p>
                           </Typography>
-                          <p className="ml-3 resumeheadlinesize">
-                          
-                          </p>
+                          <p className="ml-3 resumeheadlinesize"></p>
                         </div>
                       </div>
                     </Accordion>
                   </div>
 
-                 
-                    <div className="mt-2">
-                      <Accordion
-                        defaultExpanded={true}
-                        className="accordion_shadow"
+                  <div className="mt-2">
+                    <Accordion
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
                       >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <div className="row" style={{ width: "100%" }}>
-                            <div className="ml-4">
-                              <Typography
-                                variant="body2"
-                                className="skill-set"
-                                id="employment_reset"
-                              >
-                                EMPLOYMENT
-                              </Typography>
-                            </div>
-                            <div className="col-6 d-flex justify-content-end"></div>
+                        <div className="row" style={{ width: "100%" }}>
+                          <div className="ml-4">
+                            <Typography
+                              variant="body2"
+                              className="skill-set"
+                              id="employment_reset"
+                            >
+                              EMPLOYMENT
+                            </Typography>
                           </div>
-                        </AccordionSummary>
-                        
-                         
-                            <AccordionDetails>
-                              <Grid className="maingridLogin">
-                                <Grid item md={3}>
-                                  <div className="d-flex">
-                                    <div className="resume_font">
-                                      <span></span>
+                          <div className="col-6 d-flex justify-content-end"></div>
+                        </div>
+                      </AccordionSummary>
 
-                                      <span>
-                                       
-                                      </span>
-                                    </div>
-                                  </div>
-                                </Grid>
-                                <Grid item md={9}>
-                                  <div>
-                                    <div className="d-flex justify-content-between">
-                                      <div className="resume_font">
-                                       
-                                      </div>
-                                    </div>
-                                    <div className="resume_font">
-                                     
-                                    </div>
-                                    <div className="resume_font">
-                                      {/* <RichTextEditor
+                      <AccordionDetails>
+                        <Grid className="maingridLogin">
+                          <Grid item md={3}>
+                            <div className="d-flex">
+                              <div className="resume_font">
+                                <span></span>
+
+                                <span></span>
+                              </div>
+                            </div>
+                          </Grid>
+                          <Grid item md={9}>
+                            <div>
+                              <div className="d-flex justify-content-between">
+                                <div className="resume_font"></div>
+                              </div>
+                              <div className="resume_font"></div>
+                              <div className="resume_font">
+                                {/* <RichTextEditor
                                         className=" rich_padding New_TextEditor"
                                         value={RichTextEditor.createValueFromString(
                                           item.Describe_your_job_Profile.toString(
@@ -282,168 +298,147 @@ class Publicview extends Component {
                                         )}
                                         toolbarConfig={toolbarConfig1}
                                       /> */}
-                                    </div>
-                                  </div>
-                                </Grid>
-                              </Grid>
-                            </AccordionDetails>
-                          
-                      
-                      </Accordion>
-                    </div>
-                 
-                    <div className="mt-2">
-                      <Accordion
-                        id="eduction12"
-                        defaultExpanded={true}
-                        className="accordion_shadow"
-                      >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <div className="row" style={{ width: "100%" }}>
-                            <div className="ml-4">
-                              <Typography
-                                variant="body2"
-                                id="education_list"
-                                className="skill-set"
-                              >
-                                {" "}
-                                EDUCATION{" "}
-                              </Typography>
-                            </div>
-                            <div className="col-6 d-flex justify-content-end"></div>
-                          </div>
-                        </AccordionSummary>
-                        
-                          <AccordionDetails>
-                            <Grid className="maingridLogin">
-                              <Grid item md={3}>
-                               
-                                  <div className="d-flex">
-                                    <div className="resume_font">
-                                     
-                                    </div>
-                                  </div>
-                               
-                              </Grid>
-                              <Grid item md={9}>
-                                <div className="d-flex justify-content-between">
-                                  <div>
-                                   
-                                      <div className="resume_font">
-                                        {" "}
-                                       
-                                      </div>
-                                   
-                                      <div className="resume_font">
-                                        {" "}
-                                        
-                                      </div>
-                                  
-                                  </div>
-                                  
-                                    <div className="resume_font"> </div>
-                                  
-                                </div>
-                              </Grid>
-                            </Grid>
-                          </AccordionDetails>
-                        
-                      </Accordion>
-                    </div>
-                 
-
-                 
-                    <div className="mt-2">
-                      <Accordion
-                        id="eduction"
-                        defaultExpanded={true}
-                        className="accordion_shadow"
-                      >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <div className="row" style={{ width: "100%" }}>
-                            <div className="ml-4">
-                              <Typography
-                                variant="body2"
-                                className="skill-set"
-                                id="It_skilled"
-                              >
-                                {" "}
-                                IT SKILLS{" "}
-                              </Typography>
-                            </div>
-                            <div className="col-6 d-flex justify-content-end"></div>
-                          </div>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                         
-                            <div className="d-flex tabling_new ">
-                              <div className="table-margin">
-                                <table className="table skilleddd tableit table-striped">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Skills</th>
-                                      <th scope="col">Version</th>
-                                      <th scope="col">Last Used</th>
-                                      <th scope="col">Experience</th>
-                                    </tr>
-                                  </thead>
-                                  
-                                    <tbody>
-                                      <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
-                                    </tbody>
-                               
-                                </table>
                               </div>
                             </div>
-                         
-                        </AccordionDetails>
-                      </Accordion>
-                    </div>
-                 
-                    <div className="mt-2">
-                      <Accordion
-                        id="project_details12"
-                        defaultExpanded={true}
-                        className="accordion_shadow"
+                          </Grid>
+                        </Grid>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  <div className="mt-2">
+                    <Accordion
+                      id="eduction12"
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
                       >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <div className="row" style={{ width: "100%" }}>
-                            <div className="ml-4">
-                              <Typography
-                                variant="body2"
-                                className="skill-set"
-                                id="project_details"
-                              >
-                                PROJECT DETAILS
-                              </Typography>
-                            </div>
+                        <div className="row" style={{ width: "100%" }}>
+                          <div className="ml-4">
+                            <Typography
+                              variant="body2"
+                              id="education_list"
+                              className="skill-set"
+                            >
+                              {" "}
+                              EDUCATION{" "}
+                            </Typography>
                           </div>
-                        </AccordionSummary>
-                      
-                            <AccordionDetails>
-                              <Grid className="maingridLogin">
-                                <Grid item md={3}>
-                                  <div className="resume_font">
-                                    {/* {item.Start_Date}-{item.End_Date} */}
-                                  </div>
-                                  <div className="resume_font">
-                                    {/* <RichTextEditor
+                          <div className="col-6 d-flex justify-content-end"></div>
+                        </div>
+                      </AccordionSummary>
+
+                      <AccordionDetails>
+                        <Grid className="maingridLogin">
+                          <Grid item md={3}>
+                            <div className="d-flex">
+                              <div className="resume_font"></div>
+                            </div>
+                          </Grid>
+                          <Grid item md={9}>
+                            <div className="d-flex justify-content-between">
+                              <div>
+                                <div className="resume_font"> </div>
+
+                                <div className="resume_font"> </div>
+                              </div>
+
+                              <div className="resume_font"> </div>
+                            </div>
+                          </Grid>
+                        </Grid>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  <div className="mt-2">
+                    <Accordion
+                      id="eduction"
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                      >
+                        <div className="row" style={{ width: "100%" }}>
+                          <div className="ml-4">
+                            <Typography
+                              variant="body2"
+                              className="skill-set"
+                              id="It_skilled"
+                            >
+                              {" "}
+                              IT SKILLS{" "}
+                            </Typography>
+                          </div>
+                          <div className="col-6 d-flex justify-content-end"></div>
+                        </div>
+                      </AccordionSummary>
+
+                      <AccordionDetails>
+                        <div className="d-flex tabling_new ">
+                          <div className="table-margin">
+                            <table className="table skilleddd tableit table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Skills</th>
+                                  <th scope="col">Version</th>
+                                  <th scope="col">Last Used</th>
+                                  <th scope="col">Experience</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  <div className="mt-2">
+                    <Accordion
+                      id="project_details12"
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                      >
+                        <div className="row" style={{ width: "100%" }}>
+                          <div className="ml-4">
+                            <Typography
+                              variant="body2"
+                              className="skill-set"
+                              id="project_details"
+                            >
+                              PROJECT DETAILS
+                            </Typography>
+                          </div>
+                        </div>
+                      </AccordionSummary>
+
+                      <AccordionDetails>
+                        <Grid className="maingridLogin">
+                          <Grid item md={3}>
+                            <div className="resume_font">
+                              {/* {item.Start_Date}-{item.End_Date} */}
+                            </div>
+                            <div className="resume_font">
+                              {/* <RichTextEditor
                                       className="mt-3 rich_padding Project_Description"
                                       value={RichTextEditor.createValueFromString(
                                         item.Describe_Your_Project.toString(
@@ -453,93 +448,88 @@ class Publicview extends Component {
                                       )}
                                       toolbarConfig={toolbarConfig1}
                                     /> */}
-                                  </div>
-                                </Grid>
-                              </Grid>
-                            </AccordionDetails>
-                          
-                      </Accordion>
-                    </div>
-            
-                    <div className="  mt-2 userview_maindata ">
-                      <Accordion
-                        id="personal"
-                        defaultExpanded={true}
-                        className="accordion_shadow"
-                      >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <Typography
-                            variant="body2"
-                            className="skill-set"
-                            id="profile_summary"
-                          >
-                            PROFILE SUMMARY
-                          </Typography>
-                        </AccordionSummary>
-                        <div>
-                          <h6 className="ml-3">
-                            {" "}
-                           
-                          </h6>
-                        </div>
-                      </Accordion>
-                    </div>
-                
-                    <div className="mt-2">
-                      <Accordion
-                        id="onlineee"
-                        defaultExpanded={true}
-                        className="accordion_shadow"
-                      >
-                        <AccordionSummary
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <div className="row" style={{ width: "100%" }}>
-                            <div className="ml-4">
-                              <Typography
-                                variant="body2"
-                                className="skill-set"
-                                id="online_profiles"
-                              >
-                                {" "}
-                                ONLINE PROFILES{" "}
-                              </Typography>
                             </div>
-                            <div className="col-6 d-flex justify-content-end"></div>
-                          </div>
-                        </AccordionSummary>
+                          </Grid>
+                        </Grid>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
 
-                        <AccordionDetails>
-                          <div className="d-flex tabling_new">
-                            <div className="table-margin  ">
-                              <table className="table smoothly tableit table-striped">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Social_Profile</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Url</th>
-                                  </tr>
-                                </thead>
-                               
-                                  <tbody>
-                                    <tr className="resumeheadlinesize">
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                    </tr>
-                                  </tbody>
-                               
-                              </table>
-                            </div>
+                  <div className="  mt-2 userview_maindata ">
+                    <Accordion
+                      id="personal"
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                      >
+                        <Typography
+                          variant="body2"
+                          className="skill-set"
+                          id="profile_summary"
+                        >
+                          PROFILE SUMMARY
+                        </Typography>
+                      </AccordionSummary>
+                      <div>
+                        <h6 className="ml-3"> </h6>
+                      </div>
+                    </Accordion>
+                  </div>
+
+                  <div className="mt-2">
+                    <Accordion
+                      id="onlineee"
+                      defaultExpanded={true}
+                      className="accordion_shadow"
+                    >
+                      <AccordionSummary
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                      >
+                        <div className="row" style={{ width: "100%" }}>
+                          <div className="ml-4">
+                            <Typography
+                              variant="body2"
+                              className="skill-set"
+                              id="online_profiles"
+                            >
+                              {" "}
+                              ONLINE PROFILES{" "}
+                            </Typography>
                           </div>
-                        </AccordionDetails>
-                      </Accordion>
-                    </div>
-                 
+                          <div className="col-6 d-flex justify-content-end"></div>
+                        </div>
+                      </AccordionSummary>
+
+                      <AccordionDetails>
+                        <div className="d-flex tabling_new">
+                          <div className="table-margin  ">
+                            <table className="table smoothly tableit table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Social_Profile</th>
+                                  <th scope="col">Description</th>
+                                  <th scope="col">Url</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr className="resumeheadlinesize">
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
                   <div className="mt-2">
                     <Accordion
                       id="personal"
@@ -561,7 +551,9 @@ class Publicview extends Component {
                       <AccordionDetails>
                         <div className="d-flex">
                           <div className="m-2 redgreen_class">
-                            <div className="resume_font">Full Name</div>
+                            <div className="resume_font">
+                              Full Name : {this.state.fullName}
+                            </div>
                             <div className="resume_font">Gender</div>
                             <div className="resume_font">Marital Status</div>
                             <div className="resume_font">Email ID</div>
@@ -658,12 +650,11 @@ class Publicview extends Component {
                     </Accordion>
                   </div>
                 </div>
-              
-            </div>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-        <div>
-          {/* <Dialog
+          <div>
+            {/* <Dialog
             open={this.state.open_resumeedit}
             aria-labelledby="form-dialog-title"
             maxWidth="xs"
@@ -772,9 +763,9 @@ class Publicview extends Component {
                 ""
               )}
             </DialogContent> */}
-          {/* </Dialog> */}
-        </div>
-        {/* <Dialog
+            {/* </Dialog> */}
+          </div>
+          {/* <Dialog
           className="dialogsettle"
           open={this.state.modal_open}
           aria-labelledby="form-dialog-title"
@@ -803,7 +794,7 @@ class Publicview extends Component {
                       aria-hidden="true"
                     ></i> */}
 
-                    {/* <Input
+          {/* <Input
                       className="bodernull111 input_typing"
                       type="text"
                       name="full_name"
@@ -814,12 +805,12 @@ class Publicview extends Component {
                         this.setState({ loginemail: e.target.value })
                       }
                     /> */}
-                  {/* </fieldset> */}
-{/* 
+          {/* </fieldset> */}
+          {/* 
                   <fieldset className="inputHome padii222 ">
                     <i className="fa fa-key signup-icon" aria-hidden="true"></i> */}
 
-                    {/* <Input
+          {/* <Input
                       className="bodernull111 input_typing"
                       type="password"
                       name="full_name"
@@ -833,23 +824,23 @@ class Publicview extends Component {
                         });
                       }}
                     /> */}
-                    {/* <i
+          {/* <i
                       className="fa fa-eye signup-icon"
                       aria-hidden="true"
                       onClick={this.myFunction2}
                     ></i>
                   </fieldset> */}
 
-                  {/* <div> */}
-                    {/* <ReCAPTCHA
+          {/* <div> */}
+          {/* <ReCAPTCHA
                       className=" restedding "
                       sitekey={getSiteKey()}
                       onChange={this.handleCaptchaResponseChange}
                     /> */}
-                  {/* </div>
+          {/* </div>
                   <div>
                     <fieldset> */}
-                      {/* <ButtonInput
+          {/* <ButtonInput
                         className="mt-2 btned"
                         type="submit"
                         value="Sign In"
@@ -859,10 +850,10 @@ class Publicview extends Component {
                           this.state.loginpassword === ""
                         }
                       /> */}
-                    {/* </fieldset> */}
-                    {/* <NotificationContainer /> */}
-                  {/* </div> */}
-                  {/* <div>
+          {/* </fieldset> */}
+          {/* <NotificationContainer /> */}
+          {/* </div> */}
+          {/* <div>
                     <p className="alerday_account mt-3">
                       Don't have an account yet ?{" "}
                       <span
@@ -879,7 +870,7 @@ class Publicview extends Component {
             </div>
           </div>
         </Dialog> */}
-        {/* <Dialog
+          {/* <Dialog
           open={this.state.signupdialog}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
@@ -903,7 +894,7 @@ class Publicview extends Component {
             <div className="ml-5 mr-5">
               <div className="logininput_margin">
                 <fieldset className="padii111"> */}
-                  {/* <PhoneInput
+          {/* <PhoneInput
                     placeholder={"Mobile no. *"}
                     country={"in"}
                     tabindex="1"
@@ -918,11 +909,11 @@ class Publicview extends Component {
                       });
                     }}
                   /> */}
-                {/* </fieldset>
+          {/* </fieldset>
                 <fieldset className="inputHome padii222 ">
                   <i className="fa fa-user signup-icon" aria-hidden="true"></i> */}
 
-                  {/* <Input
+          {/* <Input
                     className="bodernull111 input_typing"
                     type="text"
                     name="full_name"
@@ -933,14 +924,14 @@ class Publicview extends Component {
                       this.setState({ username: e.target.value })
                     }
                   /> */}
-                {/* </fieldset>
+          {/* </fieldset>
                 <fieldset className="inputHome padii222 ">
                   <i
                     className="fa fa-envelope signup-icon"
                     aria-hidden="true"
                   ></i> */}
 
-                  {/* <Input
+          {/* <Input
                     className="bodernull111 input_typing"
                     type="text"
                     name="full_name"
@@ -949,11 +940,11 @@ class Publicview extends Component {
                     value={this.state.email}
                     onChange={(e) => this.setState({ email: e.target.value })}
                   /> */}
-                {/* </fieldset>
+          {/* </fieldset>
                 <fieldset className="inputHome padii222 ">
                   <i className="fa fa-key signup-icon" aria-hidden="true"></i> */}
 
-                  {/* <Input
+          {/* <Input
                     className="bodernull111 input_typing"
                     id="myInput"
                     type="password"
@@ -965,16 +956,16 @@ class Publicview extends Component {
                       this.setState({ password: e.target.value })
                     }
                   /> */}
-                  {/* <i
+          {/* <i
                     className="fa fa-eye  signup-icon"
                     aria-hidden="true"
                     onClick={this.myFunction}
                   ></i> */}
-                {/* </fieldset>
+          {/* </fieldset>
                 <fieldset className="inputHome padii222 ">
                   <i className="fa fa-key signup-icon" aria-hidden="true"></i> */}
 
-                  {/* <Input
+          {/* <Input
                     className="bodernull111 input_typing"
                     type="password"
                     id="myInput1"
@@ -986,32 +977,32 @@ class Publicview extends Component {
                       this.setState({ confirm_password: e.target.value })
                     }
                   /> */}
-                  {/* <i
+          {/* <i
                     className="fa fa-eye signup-icon"
                     aria-hidden="true"
                     onClick={this.myFunction1}
                   ></i> */}
-                {/* </fieldset>
+          {/* </fieldset>
                 <p className="terms3 mt-3"> */}
-                  {/* <input
+          {/* <input
                     type="checkbox"
                     defaultChecked={this.state.checked}
                     onChange={() => this.setState({ checked: true })}
                     color="primary"
                     inputProps={{ "aria-label": "secondary checkbox" }}
                   />{" "} */}
-                  {/* I accept terms & condition{" "}
+          {/* I accept terms & condition{" "}
                 </p> */}
-                {/* <div className="homeAsrecuriter"> */}
-                  {/* <ReCAPTCHA
+          {/* <div className="homeAsrecuriter"> */}
+          {/* <ReCAPTCHA
                     className=" demotesteddd"
                     sitekey={getSiteKey()}
                     onChange={this.handleCaptchaResponseChange}
                   /> */}
-                {/* </div> */}
+          {/* </div> */}
 
-                {/* <fieldset> */}
-                  {/* <ButtonInput
+          {/* <fieldset> */}
+          {/* <ButtonInput
                     className="text-center btned"
                     type="submit"
                     value="Sign Up"
@@ -1024,9 +1015,9 @@ class Publicview extends Component {
                       this.state.confirm_password === ""
                     }
                   /> */}
-                {/* </fieldset> */}
-                {/* <NotificationContainer /> */}
-                {/* <p className="alerday_account mt-3">
+          {/* </fieldset> */}
+          {/* <NotificationContainer /> */}
+          {/* <p className="alerday_account mt-3">
                   Already have an account ?{" "}
                   <span
                     className="signintext"
@@ -1040,10 +1031,10 @@ class Publicview extends Component {
             </div>
           </div>
         </Dialog> */}
+        </div>
       </div>
-            </div>
-        )
-    }
+    );
+  }
 }
 
-export default HOC(Publicview)
+export default HOC(Publicview);
