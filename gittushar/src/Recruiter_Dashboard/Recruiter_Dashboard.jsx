@@ -19,12 +19,12 @@ class Recruiter_Dashboard extends Component {
     this.state = {
       alldata: [],
       value: "",
-      id: "",
-      projectopen: false,
-      Project_Title: "",
-      Project_Description: "",
-      Budget_Limit: "",
-      Budget_Currency: "",
+      // id: "",
+      // projectopen: false,
+      // Project_Title: "",
+      // Project_Description: "",
+      // Budget_Limit: "",
+      // Budget_Currency: "",
     };
   }
 
@@ -33,7 +33,7 @@ class Recruiter_Dashboard extends Component {
 
     axios.get(url).then(
       (response) => {
-        console.log("======alldata", response.data.data);
+        // console.log("======alldata", response.data.data);
         this.setState({
           alldata: response.data.data,
         });
@@ -74,18 +74,23 @@ class Recruiter_Dashboard extends Component {
     // });
   };
 
-  actionlive = () => {
-    let url = "http://localhost:8000/ProjectLive/303/384";
-    axios.get(url).then(
-      (response) => {
-        console.log("======alldata", response.data.data);
-        this.setState({
-          alldata: response.data.data,
-        });
-      },
+  actionlive = (data) => {
+    try {
+      let url = `http://localhost:8000/ProjectLive/${data.User_id}/${data.id}/${data.Project_Status}`;
+      console.log("bhawna", url);
+      axios.patch(url).then(
+        (response) => {
+          console.log("======alldata", response.data.data);
+       
+        },
 
-      (error) => {}
-    );
+        (error) => {
+          console.log("ere", error);
+        }
+      );
+    } catch (error) {
+      console.log("ty err", error);
+    }
   };
   valueselect = (s) => {
     console.log("======ggghhghhthtgggh", s);
@@ -162,14 +167,15 @@ class Recruiter_Dashboard extends Component {
 
             <tbody>
               {this.state.alldata.map((item, index) => (
-                <tr
-                 
-                >
+                <tr>
                   <th>{item.id}</th>
-                  <th scope="col"  onClick={() => {
-                    console.log(item);
-                    this.Projectpro(item.id);
-                  }}>
+                  <th
+                    scope="col"
+                    onClick={() => {
+                      console.log(item);
+                      this.Projectpro(item.id);
+                    }}
+                  >
                     <p>{item.Project_Title}</p>
                   </th>
                   <th scope="col">
@@ -194,7 +200,7 @@ class Recruiter_Dashboard extends Component {
                       />
                       <PlayCircleOutlineIcon
                         className="deleteicon ml-3"
-                        onClick={this.actionlive}
+                        onClick={this.actionlive(item)}
                       />
                     </label>
                   </th>
