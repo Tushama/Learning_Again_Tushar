@@ -87,10 +87,10 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
-  resumeOpen = (data) => {
-    console.log(data)
-    alert("daa")
-    window.open(`resume-view/${data.userid}/${data.Id}`)
+  resumeOpen = () => {
+    // console.log(data);
+    // let resumehead = "heading";
+    // window.open(`resume-view/${data.userid}/${data.Id}/${resumehead}`);
     // // let id = data.Id;
     // // let userid = data.userid;
     // // localStorage.setItem("selectedResumeId", id);
@@ -155,11 +155,17 @@ export class Candidate extends Component {
                   </th>
                   <th
                     scope="col"
-                    onClick={() => {
-                      this.resumeOpen(item);
-                    }}
+                    // onClick={() => {
+                    //   this.resumeOpen(item);
+                    // }}
                   >
-                    <p>Resume name</p>
+                    {/* <a >Resume name</a> */}
+                    <a
+                      href={`resume-view/${item.userid}/${item.Id} ` + "/" + "heading"     } 
+                      target="_blank"
+                    >
+                      Resume name
+                    </a>
                   </th>
                   <th scope="col">
                     {new Intl.DateTimeFormat("en-US", {

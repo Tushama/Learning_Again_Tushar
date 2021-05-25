@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HOC  from "../../src/HOC";
+import HOC from "../../src/HOC";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Grid from "@material-ui/core/Grid";
 // import "../../userView/UserView.css";
@@ -38,10 +38,10 @@ import ReactTooltip from "react-tooltip";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/semantic-ui.css";
 
- class Publicview extends Component {
+class Publicview extends Component {
   constructor(props) {
     super(props);
-console.log("publiv view props=============",props)
+    console.log("publiv view props=============", props);
     this.state = {
       value: "",
       profileSummary: {},
@@ -82,9 +82,9 @@ console.log("publiv view props=============",props)
     let url =
       getBaseUrl() +
       "resumePublicView/" +
-      this.props.match.params.userid +
+      this.props.match.params.userId +
       "/" +
-      this.props.match.params.Id;
+      this.props.match.params.resumeId;
 
     axios.get(url).then(
       (response) => {
@@ -307,7 +307,8 @@ console.log("publiv view props=============",props)
       return;
     }
 
-    const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailReg =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!this.state.loginemail.match(emailReg)) {
       this.createNotification("warning", "please enter a valid email id", null);
       return;
@@ -354,11 +355,10 @@ console.log("publiv view props=============",props)
           }
 
           let userId = this.props.match.params.userId;
-          let resumeId =  this.props.match.params.resumeId;
+          let resumeId = this.props.match.params.resumeId;
           let resumeheadline = this.props.match.params.resumeheadline;
           this.props.history.push(
-            `/resume-view/${userId}/${resumeId}/${resumeheadline}`,
-            
+            `/resume-view/${userId}/${resumeId}/${resumeheadline}`
           );
 
           this.setState({
@@ -413,7 +413,8 @@ console.log("publiv view props=============",props)
       this.createNotification("error", "Please enter an email id", null);
       return;
     }
-    const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailReg =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!this.state.email.match(emailReg)) {
       this.createNotification("warning", "please enter a valid email id", null);
 
@@ -765,20 +766,31 @@ console.log("publiv view props=============",props)
                         </Typography>
                       </AccordionSummary>
                       <div>
-                        <h6 className="ml-3 resumeheadlinesize">
-                          {" "}
-                          {this.state.headline.resumehead}
-                        </h6>
+                        { this.state.headline === undefined || this.state.headline.resumehead === undefined ||
+                        this.state.headline.resumehead === "N/A" ?  (
+                          ""
+                        ) : (
+                          <h6 className="ml-3 resumeheadlinesize">
+                            {" "}
+                            {this.state.headline.resumehead}
+                          </h6>
+                        )}
+
                         <div className="d-flex">
+                          {        }
                           <Typography
                             variant="body2"
                             className="skill-set ml-3"
                           >
                             <p>Skill Set</p>
                           </Typography>
-                          <p className="ml-3 resumeheadlinesize">
-                            {this.state.headline.skillset}
-                          </p>
+                          {this.state.headline === undefined || this.state.headline.skillset === undefined ||
+                        this.state.headline.skillset === "N/A" ?  (
+                          ""
+                        ) :(<p className="ml-3 resumeheadlinesize">
+                        {this.state.headline.skillset}
+                      </p>)}
+                          
                         </div>
                       </div>
                     </Accordion>
@@ -985,7 +997,7 @@ console.log("publiv view props=============",props)
                                   </thead>
                                   {this.state.Itskill.map((item, index) => (
                                     <tbody>
-                                      <tr >
+                                      <tr>
                                         <td>{item.ItSkils}</td>
                                         <td>{item.Version}</td>
                                         <td>{item.Last_used}</td>
@@ -1661,4 +1673,4 @@ console.log("publiv view props=============",props)
 //   UserStatus: getData(state, USER_LOGIN) || {},
 //   chatlistdataArr: getData(state, "chatlistdataArr") || [],
 // });
-export default HOC(Publicview)
+export default HOC(Publicview);

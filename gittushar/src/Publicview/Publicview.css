@@ -369,7 +369,7 @@ font-size: 12px !important;
   width: 100vh !important;
 }
 
-select {
+/* select {
   text-transform: none;
   width: 100% !important;
   height: 38px !important;
@@ -378,7 +378,7 @@ select {
   padding: 10px !important;
   height: 6vh !important;
   font-size: 12px;
-}
+} */
 .phoneinputwidth {
   width: 100% !important;
 }
