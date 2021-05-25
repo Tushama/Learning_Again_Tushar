@@ -19,12 +19,6 @@ class Recruiter_Dashboard extends Component {
     this.state = {
       alldata: [],
       value: "",
-      // id: "",
-      // projectopen: false,
-      // Project_Title: "",
-      // Project_Description: "",
-      // Budget_Limit: "",
-      // Budget_Currency: "",
     };
   }
 
@@ -33,7 +27,6 @@ class Recruiter_Dashboard extends Component {
 
     axios.get(url).then(
       (response) => {
-        // console.log("======alldata", response.data.data);
         this.setState({
           alldata: response.data.data,
         });
@@ -80,8 +73,15 @@ class Recruiter_Dashboard extends Component {
       console.log("bhawna", url);
       axios.patch(url).then(
         (response) => {
+          if (response.status == 200) {
+            Swal.fire({
+              icon: "success",
+              title: "success",
+              text: response.data.message,
+            });
+          }
+          window.location.reload();
           console.log("======alldata", response.data.data);
-       
         },
 
         (error) => {
@@ -94,10 +94,7 @@ class Recruiter_Dashboard extends Component {
   };
   valueselect = (s) => {
     console.log("======ggghhghhthtgggh", s);
-    // this.setState({
-    //   value:event.target.value,
-    // });
-    // console.log("======ggghhghhthtgggh", event.target.value);
+
     let url = `http://seo.srcservicesltd.com:8000/projectlist/${s}/0`;
     axios.get(url).then(
       (response) => {
@@ -135,26 +132,23 @@ class Recruiter_Dashboard extends Component {
   render() {
     return (
       <div>
-        <div className="blankspace">
-          <h1>Recruiter</h1>
-        </div>
         <div className="displaytable1">
-          <table className="table1 table table-striped displaytable tableoutline ">
+          <table className=" table table-striped displaytable tableoutline ">
             <thead>
               <tr className="colorback">
-                <th scope="row">id</th>
+                <th scope="col">Id</th>
                 <th scope="col">Project Name</th>
-                <th scope="col">
+                <th scope="row">
                   {" "}
                   <select
                     onChange={(e) => {
                       this.valueselect(e.target.value);
                     }}
                   >
-                    <option value={"all"}>Status</option>
-                    <option value={"Live"}>Live</option>
-                    <option value={"Draft"}>Draft</option>
-                    <option value={"Decline"}>Decline</option>
+                    <option value="all">All</option>
+                    <option value="Live">Live</option>
+                    <option value="pending for Review">pending</option>
+                    <option value="Decline">Decline</option>
                     {/* <option value="Deleted">live</option>
                     <option value="Decline">Delete</option> */}
                   </select>
@@ -209,7 +203,7 @@ class Recruiter_Dashboard extends Component {
             </tbody>
           </table>
         </div>
-        <Dialog
+        {/* <Dialog
           className=""
           open={this.state.projectopen}
           aria-labelledby="form-dialog-title"
@@ -281,7 +275,7 @@ class Recruiter_Dashboard extends Component {
               </Button>
             </div>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
       </div>
     );
   }
