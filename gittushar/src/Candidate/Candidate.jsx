@@ -88,7 +88,9 @@ export class Candidate extends Component {
     );
   };
   resumeOpen = (data) => {
-    window.open("resume-view/:userid/:Id/:resumeheadline")
+    console.log(data)
+    alert("daa")
+    window.open(`resume-view/${data.userid}/${data.Id}`)
     // // let id = data.Id;
     // // let userid = data.userid;
     // // localStorage.setItem("selectedResumeId", id);
