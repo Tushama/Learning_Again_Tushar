@@ -87,29 +87,7 @@ export class Candidate extends Component {
       (error) => {}
     );
   };
-  resumeOpen = () => {
-    // console.log(data);
-    // let resumehead = "heading";
-    // window.open(`resume-view/${data.userid}/${data.Id}/${resumehead}`);
-    // // let id = data.Id;
-    // // let userid = data.userid;
-    // // localStorage.setItem("selectedResumeId", id);
-    // // localStorage.setItem("selectedUserId", userid);
-    // // window.open("Public-Viewer");
-    // // console.log("data------------------", data);
-    // let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${data.userid}/${data.Id}`;
-    // console.log("hhhhhhhhhhhhhhhh url", url);
-    // axios.get(url).then(
-    //   (response) => {
-    //     this.setState({
-    //       // resumeDetails: response.data.data,
-    //       // candidateResume: true,
-    //     });
-    //   },
 
-    //   (error) => {}
-    // );
-  };
   render() {
     const { resumeDetails } = this.state;
     console.log(
@@ -153,15 +131,13 @@ export class Candidate extends Component {
                   <th scope="col">
                     <p>{item.Full_Name}</p>
                   </th>
-                  <th
-                    scope="col"
-                    // onClick={() => {
-                    //   this.resumeOpen(item);
-                    // }}
-                  >
-                    {/* <a >Resume name</a> */}
+                  <th scope="col">
                     <a
-                      href={`resume-view/${item.userid}/${item.Id} ` + "/" + "heading"     } 
+                      href={
+                        `resume-view/${item.userid}/${item.Id} ` +
+                        "/" +
+                        "heading"
+                      }
                       target="_blank"
                     >
                       Resume name
