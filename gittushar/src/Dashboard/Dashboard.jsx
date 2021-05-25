@@ -13,29 +13,44 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      Veryfied_user: "",
-      Un_verified_user: "",
-      Total_User: "",
-      Total_Resume: "",
-      Total_Live: "",
-      Total_Deleted_Request: "",
-      Total_Draft: "",
-    };
+      id: '',
+      Veryfied_user: '',
+      Un_verified_user:'',
+      Total_User:'',
+      Total_Resume:'',
+      Total_Live:'',
+      Total_Deleted_Request:'',
+      Total_Draft:'',
+
+      graphdata:  {
+        labels: ['1', '2', '3','4', '5', '6','7', '8', '9','10', '11', '12',],
+        datasets: [
+          {
+            label: "Users Count",
+            backgroundColor: "rgba(75,192,192,1)",
+            borderColor: "rgba(0,0,0,1)",
+            borderWidth: 2,
+            data: [
+              this.state.id,
+              this.state.Veryfied_user,
+              this.state.Un_verified_user,
+              this.state.Total_User,
+              this.state.Total_Resume,
+              this.state.Total_Live,
+              this.state.Total_Deleted_Request,
+              this.state.Total_Draft,
+            ],
+          },
+        ],
+      }
+
+      
+
+    }
   }
 
-  state = {
-    labels: ["January", "February", "March", "April", "May"],
-    datasets: [
-      {
-        label: "Rainfall",
-        backgroundColor: "rgba(75,192,192,1)",
-        borderColor: "rgba(0,0,0,1)",
-        borderWidth: 2,
-        data: [65, 59, 80, 81, 56],
-      },
-    ],
-  };
+
+  
 
   Reload = () => {
     let url = "http://seo.srcservicesltd.com:8000/Refresh";
@@ -80,20 +95,6 @@ class Dashboard extends Component {
               <Grid item md={3}>
                 <Card className="card1">
                   <b>Total Registered Users</b>
-                  {/* <Bar
-          data={this.state.Total_User}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        /> */}
                 </Card>
               </Grid>
 
@@ -110,7 +111,22 @@ class Dashboard extends Component {
               </Grid>
 
               <Grid item md={6}>
-                <Card className="card3"></Card>
+                <Card className="card3">
+                  <Bar
+                    data={this.state.graphdata}
+                    options={{
+                      title: {
+                        display: true,
+                        text: "Total Registered Users per day",
+                        fontSize: 20,
+                      },
+                      legend: {
+                        display: true,
+                        position: "right",
+                      },
+                    }}
+                  />
+                </Card>
               </Grid>
 
               {/* <Grid item md={3}>
@@ -144,8 +160,6 @@ class Dashboard extends Component {
               <Grid item md={6}>
                 <Card className="card3"></Card>
               </Grid>
-
-        
             </Grid>
           </div>
 
@@ -166,12 +180,8 @@ class Dashboard extends Component {
               {/* <Grid item md={6}>
                 <Card className="card3"></Card>
               </Grid> */}
-
-        
             </Grid>
           </div>
-
-
         </div>
       </div>
     );
