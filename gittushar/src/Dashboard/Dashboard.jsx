@@ -22,27 +22,27 @@ class Dashboard extends Component {
       Total_Deleted_Request:'',
       Total_Draft:'',
 
-      graphdata:  {
-        labels: ['1', '2', '3','4', '5', '6','7', '8', '9','10', '11', '12',],
-        datasets: [
-          {
-            label: "Users Count",
-            backgroundColor: "rgba(75,192,192,1)",
-            borderColor: "rgba(0,0,0,1)",
-            borderWidth: 2,
-            data: [
-              this.state.id,
-              this.state.Veryfied_user,
-              this.state.Un_verified_user,
-              this.state.Total_User,
-              this.state.Total_Resume,
-              this.state.Total_Live,
-              this.state.Total_Deleted_Request,
-              this.state.Total_Draft,
-            ],
-          },
-        ],
-      }
+      // graphdata:  {
+      //   labels: ['1', '2', '3','4', '5', '6','7', '8', '9','10', '11', '12',],
+      //   datasets: [
+      //     {
+      //       label: "Users Count",
+      //       backgroundColor: "rgba(75,192,192,1)",
+      //       borderColor: "rgba(0,0,0,1)",
+      //       borderWidth: 2,
+      //       data: [
+      //         this.state.id,
+      //         this.state.Veryfied_user,
+      //         this.state.Un_verified_user,
+      //         this.state.Total_User,
+      //         this.state.Total_Resume,
+      //         this.state.Total_Live,
+      //         this.state.Total_Deleted_Request,
+      //         this.state.Total_Draft,
+      //       ],
+      //     },
+      //   ],
+      // }
 
       
 
@@ -112,7 +112,7 @@ class Dashboard extends Component {
 
               <Grid item md={6}>
                 <Card className="card3">
-                  <Bar
+                  {/* <Bar
                     data={this.state.graphdata}
                     options={{
                       title: {
@@ -125,7 +125,7 @@ class Dashboard extends Component {
                         position: "right",
                       },
                     }}
-                  />
+                  /> */}
                 </Card>
               </Grid>
 
