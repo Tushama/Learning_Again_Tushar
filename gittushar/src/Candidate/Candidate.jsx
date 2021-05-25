@@ -97,7 +97,7 @@ export class Candidate extends Component {
     return (
       <div>
         <div className="displaying">
-          <table class="table displaytable tableoutline">
+          <table class="table  table-striped displaytable tableoutline">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Id</th>
