@@ -88,24 +88,24 @@ export class Candidate extends Component {
     );
   };
   resumeOpen = (data) => {
-    let id = data.Id;
-    let userid = data.userid;
-    localStorage.setItem("selectedResumeId", id);
-    localStorage.setItem("selectedUserId", userid);
-    window.open("Public-Viewer");
-    console.log("data------------------", data);
-    // let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${data.userid}/${data.Id}`;
-    // console.log("hhhhhhhhhhhhhhhh url", url);
-    // axios.get(url).then(
-    //   (response) => {
-    //     this.setState({
-    //       resumeDetails: response.data.data,
-    //       candidateResume: true,
-    //     });
-    //   },
+    // let id = data.Id;
+    // let userid = data.userid;
+    // localStorage.setItem("selectedResumeId", id);
+    // localStorage.setItem("selectedUserId", userid);
+    // window.open("Public-Viewer");
+    // console.log("data------------------", data);
+    let url = `http://seo.srcservicesltd.com:8000/resumePublicView/${data.userid}/${data.Id}`;
+    console.log("hhhhhhhhhhhhhhhh url", url);
+    axios.get(url).then(
+      (response) => {
+        this.setState({
+          // resumeDetails: response.data.data,
+          // candidateResume: true,
+        });
+      },
 
-    //   (error) => {}
-    // );
+      (error) => {}
+    );
   };
   render() {
     const { resumeDetails } = this.state;

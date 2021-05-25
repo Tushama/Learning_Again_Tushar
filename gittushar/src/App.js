@@ -19,7 +19,7 @@ function App() {
             path="/recruiter-dashboard"
             component={Recruiter_Dashboard}
           ></Route>
-          <Route path="/Public-Viewer" component={Publicview}></Route>
+          <Route path="/resume-view/:userId/:resumeId/:resumeheadline" component={Publicview}></Route>
         </Switch>
       </BrowserRouter>
     </div>
