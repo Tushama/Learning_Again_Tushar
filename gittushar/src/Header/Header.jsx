@@ -44,22 +44,23 @@ class Header extends Component {
           className="navbar-brand"
           style={{ marginLeft: "5%", marginBottom: "1%", marginTop: "-1%" }}
         >
-          <img src={logo} width="100" height="40" alt="" />
+          <img src={logo} width="100" height="30" alt="" />
         </a>
         <div className="row w-100">
-          <div className="col-7">
+          <div className="col-4">
             <ul className="navbar-nav ml-5">
-              <li class="nav-item">
+              <li class="nav-item ">
                 <a class="nav-link text-light" href="#">
                   Home
                 </a>
               </li>
             </ul>
           </div>
-          <div className="col-5">
-            <form class="form-inline my-2 my-lg-0 ">
+          <div className="col-4">
+            
+            <form class="form-inline my-2 my-lg-0  ">
               <input
-                class="form-control mr-sm-2"
+                class="form-control mr-sm-2 searching "
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -70,11 +71,11 @@ class Header extends Component {
                   color: "red",
                   position: "relative",
                   marginLeft: "-7%",
-                  height: 30,
+                  height: 20,
                   width: 25,
                 }}
               />
-
+             
               <span>
                 <NotificationsActiveIcon className="buttonuser ml-3 mr-3" />
                 <AccountCircleIcon className="buttonuser ml-3" />
@@ -88,8 +89,9 @@ class Header extends Component {
                     <p onClick={this.logouthandler}>Logout</p>
                   </div>
                 </div>
-                {/* <h1> {this.state.name} </h1> */}
+               
               </span>
+             
             </form>
           </div>
         </div>

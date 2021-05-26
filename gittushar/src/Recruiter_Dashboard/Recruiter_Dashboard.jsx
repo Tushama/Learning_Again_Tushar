@@ -69,7 +69,7 @@ class Recruiter_Dashboard extends Component {
 
   actionlive = (data) => {
     try {
-      let url = `http://localhost:8000/ProjectLive/${data.User_id}/${data.id}/${data.Project_Status}`;
+      let url = `http://localhost:8000/ProjectLive/${data.User_id}/${data.id}/Live`;
       console.log("bhawna", url);
       axios.patch(url).then(
         (response) => {
