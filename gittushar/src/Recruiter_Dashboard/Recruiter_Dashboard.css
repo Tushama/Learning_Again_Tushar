@@ -22,11 +22,24 @@
 .deleteicon {
   font-size: 10px !important;
   border: 1px solid black !important;
-  color: black;
+  /* color: black; */
+ color: red !important;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   font-weight: bolder !important;
+
+}
+.deleteicon1 {
+  font-size: 10px !important;
+  border: 1px solid black !important;
+  /* color: black; */
+ color: green !important;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: bolder !important;
+
 }
 .iconclose {
   font-size: 25px !important;

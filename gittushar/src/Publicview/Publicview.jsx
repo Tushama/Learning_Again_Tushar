@@ -613,7 +613,7 @@ class Publicview extends Component {
                 </p>
               )}
 
-              <div className="public_contact">
+              {/* <div className="public_contact"> */}
                 {/* <div className="Views">
                   <Button
                     className="btned get_help_btn1 ml-4"
@@ -636,11 +636,11 @@ class Publicview extends Component {
                     CHAT
                   </Button>
                 </div> */}
-              </div>
+              {/* </div> */}
 
-              <div className="ml-4 mr-5 mt-4 resetPubblic ">
+              <div className=" mr-5 mt-4 resetPubblic ">
                 <p className="qlink"> Quick Links</p>
-                <hr style={{ width: "100%" }} />
+                <hr style={{ width: "50%%" }} />
 
                 <div
                   className="linked "

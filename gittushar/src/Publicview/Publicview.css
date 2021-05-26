@@ -478,6 +478,9 @@ font-size: 12px !important;
 }
 .resetPubblic{
   display: block;
+  margin-left: 10% !important;
+  font-size: medium;
+  font-weight: bolder !important;
 }
 .user_fonted {
   font-weight: bold;

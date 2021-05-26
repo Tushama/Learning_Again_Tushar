@@ -185,7 +185,7 @@ class Recruiter_Dashboard extends Component {
                       </Button>
 
                       <Button
-                        className="deleteicon mt-1 "
+                        className="deleteicon1 mt-1 "
                         onClick={() => this.actionlive(item)}
                       >
                         Live
